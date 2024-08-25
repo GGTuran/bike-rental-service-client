@@ -14,8 +14,26 @@ import PackageIcon from "@/assets/icons/PackageIcon";
 import InfoIcon from "@/assets/icons/InfoIcon";
 import ShoppingCartIcon from "@/assets/icons/ShoppingCartIcon";
 import MailIcon from "@/assets/icons/MailIcon";
+import MoonIcon from "@/assets/icons/MoonIcon";
+import SunIcon from "@/assets/icons/SunIcon";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }, [darkMode]);
+
   return (
     <header className="bg-background   text-foreground shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
@@ -62,6 +80,13 @@ const Navbar = () => {
           >
             Contact
           </a>
+          <button
+            onClick={toggleDarkMode}
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
+            {/* {darkMode ? "Light Mode" : "Dark Mode"} */}
+            {darkMode ? <MoonIcon className="h-5 w-5" /> : <SunIcon className="h-5 w-5" />}
+          </button>
         </nav>
         <Sheet>
           <SheetTrigger asChild>
@@ -128,6 +153,13 @@ const Navbar = () => {
                 <MailIcon className="h-5 w-5" />
                 Contact
               </a>
+              <button
+                onClick={toggleDarkMode}
+                className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+              >
+                {darkMode ? <MoonIcon className="h-5 w-5" /> : <SunIcon className="h-5 w-5" />}
+                {/* {darkMode ? "Light Mode" : "Dark Mode"} */}
+              </button>
             </nav>
           </SheetContent>
         </Sheet>
