@@ -13,7 +13,7 @@ const BikeDetails = () => {
       isError,
     } = useGetBikeByIdQuery(bikeId);
   
-    console.log(bike.data.isAvailable);
+    // console.log(bike.data.isAvailable);
 
     
 
