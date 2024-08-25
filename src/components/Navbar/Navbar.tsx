@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Sheet,
   SheetTrigger,
@@ -6,19 +5,23 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import HomeIcon from "@/assets/icons/HomeIcon";
 import MountainIcon from "@/assets/icons/MountainIcon";
 import MenuIcon from "@/assets/icons/MenuIcon";
 import XIcon from "@/assets/icons/XIIcon";
-import PackageIcon from "@/assets/icons/PackageIcon";
 import InfoIcon from "@/assets/icons/InfoIcon";
-import ShoppingCartIcon from "@/assets/icons/ShoppingCartIcon";
 import MailIcon from "@/assets/icons/MailIcon";
 import MoonIcon from "@/assets/icons/MoonIcon";
 import SunIcon from "@/assets/icons/SunIcon";
 import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { logout, selectCurrentUser, useCurrentToken } from "@/redux/features/auth/authSlice";
+
+
 
 const Navbar = () => {
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(selectCurrentUser);
+  const token = useAppSelector(useCurrentToken);
 
   const [darkMode, setDarkMode] = useState(false);
 
@@ -26,48 +29,26 @@ const Navbar = () => {
     setDarkMode((prevMode) => !prevMode);
   };
 
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   useEffect(() => {
     if (darkMode) {
-      document.body.classList.add('dark');
+      document.body.classList.add("dark");
     } else {
-      document.body.classList.remove('dark');
+      document.body.classList.remove("dark");
     }
   }, [darkMode]);
 
   return (
-    <header className="bg-background   text-foreground shadow-sm">
+    <header className="bg-background text-foreground shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <a href="/" className="flex items-center">
           <MountainIcon className="h-6 w-6 text-primary" />
-          <span>Home Of Sports</span>
+          <span>Home Of Bikes</span>
         </a>
         <nav className="hidden items-center gap-6 md:flex">
-          <a
-            href="/"
-            className="text-sm font-medium transition-colors hover:text-primary"
-          >
-            Home
-          </a>
-          <a
-            href="/products"
-            className="text-sm font-medium transition-colors hover:text-primary"
-          >
-            All Products
-          </a>
-
-          <a
-            href="/manage-products"
-            className="text-sm font-medium transition-colors hover:text-primary"
-          >
-            Manage Products
-          </a>
-
-          <a
-            href="/cart"
-            className="text-sm font-medium transition-colors hover:text-primary"
-          >
-            Cart
-          </a>
           <a
             href="/about-us"
             className="text-sm font-medium transition-colors hover:text-primary"
@@ -75,16 +56,38 @@ const Navbar = () => {
             About Us
           </a>
           <a
-            href="contact"
+            href="/contact"
             className="text-sm font-medium transition-colors hover:text-primary"
           >
             Contact
           </a>
+          {token ? (
+            <button
+              onClick={handleLogout}
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
+              Logout
+            </button>
+          ) : (
+            <>
+              <a
+                href="/login"
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                Login
+              </a>
+              <a
+                href="/signup"
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                Sign Up
+              </a>
+            </>
+          )}
           <button
             onClick={toggleDarkMode}
             className="text-sm font-medium transition-colors hover:text-primary"
           >
-            {/* {darkMode ? "Light Mode" : "Dark Mode"} */}
             {darkMode ? <MoonIcon className="h-5 w-5" /> : <SunIcon className="h-5 w-5" />}
           </button>
         </nav>
@@ -99,7 +102,7 @@ const Navbar = () => {
             <div className="flex h-16 items-center justify-between px-4">
               <a href="/" className="flex items-center">
                 <MountainIcon className="h-6 w-6 text-primary" />
-                <span className="sr-only">Home Of Sports</span>
+                <span className="sr-only">Home Of Bikes</span>
               </a>
               <SheetClose asChild>
                 <Button variant="ghost" size="icon">
@@ -109,36 +112,6 @@ const Navbar = () => {
               </SheetClose>
             </div>
             <nav className="grid gap-4 px-4 py-6">
-              <a
-                href="/"
-                className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
-              >
-                <HomeIcon className="h-5 w-5" />
-                Home
-              </a>
-              <a
-                href="/products"
-                className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
-              >
-                <PackageIcon className="h-5 w-5" />
-                All Products
-              </a>
-
-              <a
-                href="manage-products"
-                className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
-              >
-                <PackageIcon className="h-5 w-5" />
-                Manage Products
-              </a>
-
-              <a
-                href="/cart"
-                className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
-              >
-                <ShoppingCartIcon className="h-5 w-5" />
-                Cart
-              </a>
               <a
                 href="/about-us"
                 className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
@@ -153,12 +126,34 @@ const Navbar = () => {
                 <MailIcon className="h-5 w-5" />
                 Contact
               </a>
+              {token ? (
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+                >
+                  Logout
+                </button>
+              ) : (
+                <>
+                  <a
+                    href="/login"
+                    className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+                  >
+                    Login
+                  </a>
+                  <a
+                    href="/signup"
+                    className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+                  >
+                    Sign Up
+                  </a>
+                </>
+              )}
               <button
                 onClick={toggleDarkMode}
                 className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
               >
                 {darkMode ? <MoonIcon className="h-5 w-5" /> : <SunIcon className="h-5 w-5" />}
-                {/* {darkMode ? "Light Mode" : "Dark Mode"} */}
               </button>
             </nav>
           </SheetContent>

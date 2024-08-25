@@ -1,8 +1,13 @@
 import { Button } from '@/components/ui/button';
 import { useLoginMutation } from '@/redux/features/auth/authApi';
+import { setUser } from '@/redux/features/auth/authSlice';
+import { useAppDispatch } from '@/redux/hooks';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const { register, handleSubmit} = useForm({
         defaultValues: {
             email: "john@user.com",
@@ -10,17 +15,21 @@ const Login = () => {
         },
     });
 
-    const [login, {data, error}] = useLoginMutation();
-    console.log('data =>', data);
-    console.log('error =>', error);
+    const [login, {error}] = useLoginMutation();
+    
 
 
-    const onSubmit = (data) => {
+    const onSubmit = async(data) => {
         const userInfo = {
             email: data.email,
             password: data.password,
         };
-        login(userInfo);
+        const res = await login(userInfo).unwrap();
+        // console.log(res.token);
+        const user = res.data;
+        console.log(user)
+        dispatch(setUser({ user: user, token:res.token }));
+        navigate('/');
     }
     return (
         <form >
