@@ -66,9 +66,13 @@ const Navbar = () => {
           )}
           {user && user.role === "user" && (
            <>
-            <a href="/user-dashboard" className="text-sm font-medium transition-colors hover:text-primary">
+            <a href="/get-me" className="text-sm font-medium transition-colors hover:text-primary">
            User Dashboard
          </a>
+            <a href="/users/all-bikes" className="text-sm font-medium transition-colors hover:text-primary">
+           Bikes
+         </a>
+            
          </>
           )}
 

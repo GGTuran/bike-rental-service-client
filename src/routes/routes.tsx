@@ -2,13 +2,17 @@ import App from "@/App";
 import AboutUs from "@/pages/AboutUs";
 import Contact from "@/pages/Contact";
 import Error from "@/pages/Error";
+import GetME from "@/pages/GetMe";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
+import { routeGenerator } from "@/utils/routesGenerator";
 
 
 
 import { createBrowserRouter } from "react-router-dom";
+import { userPaths } from "./userRoutes";
+import BikeDetails from "@/pages/BikeDetails";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +32,10 @@ const router = createBrowserRouter([
                 path:'/contact',
                 element:<Contact></Contact>,
             },
+            {
+                path:'/bikes/:bikeId',
+                element:<BikeDetails></BikeDetails>,
+            }
         ]
     },
     {
@@ -35,6 +43,16 @@ const router = createBrowserRouter([
         element:<App></App>,
         errorElement:<Error></Error>,
         // children:
+    },
+    {
+        path:'/users',
+        element:<App></App>,
+        errorElement:<Error></Error>,
+        children:routeGenerator(userPaths),
+    },
+    {
+        path:'/get-me',
+        element:<GetME></GetME>
     },
     
     {
@@ -44,7 +62,8 @@ const router = createBrowserRouter([
     {
         path:'/signup',
         element:<Register></Register>,
-    }
+    },
+    
 ]);
 
 export default router;

@@ -1,3 +1,4 @@
+import HistoryMilestones from "@/components/HistoryMilestones/HistoryMilestones";
 import Contact from "./Contact";
 
 const AboutUs = () => {
@@ -83,6 +84,11 @@ const AboutUs = () => {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* History section */}
+      <section className="bg-background py-12 md:py-20 lg:py-24">
+        <HistoryMilestones></HistoryMilestones>
       </section>
 
       {/* Contact Information */}

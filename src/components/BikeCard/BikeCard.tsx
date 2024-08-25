@@ -31,7 +31,7 @@ const BikeCard = ({ bike }: any) => {
           <span className="font-medium">${bike.pricePerHour}</span>
           <Link
             className="flex justify-center items-center"
-            to={`/product/${bike._id}`}
+            to={`/bikes/${bike._id}`}
           >
             <motion.button
               whileHover={{ scale: 1.05 }}
