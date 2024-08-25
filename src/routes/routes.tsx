@@ -2,6 +2,7 @@ import App from "@/App";
 import AboutUs from "@/pages/AboutUs";
 import Contact from "@/pages/Contact";
 import Error from "@/pages/Error";
+import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
         element: <App></App>,
         errorElement:<Error></Error>,
         children:[
+            {
+                index:true,
+                element:<Home></Home>
+            },
             {
                 path:'/about-us',
                 element:<AboutUs></AboutUs>,
@@ -37,7 +42,7 @@ const router = createBrowserRouter([
         element:<Login></Login>,
     },
     {
-        path:'/register',
+        path:'/signup',
         element:<Register></Register>,
     }
 ]);

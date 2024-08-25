@@ -16,8 +16,6 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { logout, selectCurrentUser, useCurrentToken } from "@/redux/features/auth/authSlice";
 
-
-
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
@@ -49,18 +47,32 @@ const Navbar = () => {
           <span>Home Of Bikes</span>
         </a>
         <nav className="hidden items-center gap-6 md:flex">
-          <a
-            href="/about-us"
-            className="text-sm font-medium transition-colors hover:text-primary"
-          >
+          {/* Common Links */}
+          <a href="/" className="text-sm font-medium transition-colors hover:text-primary">
+            Home
+          </a>
+          <a href="/about-us" className="text-sm font-medium transition-colors hover:text-primary">
             About Us
           </a>
-          <a
-            href="/contact"
-            className="text-sm font-medium transition-colors hover:text-primary"
-          >
+          <a href="/contact" className="text-sm font-medium transition-colors hover:text-primary">
             Contact
           </a>
+
+          {/* Conditional Links Based on Role */}
+          {user && user.role === "admin" && (
+            <a href="/admin-dashboard" className="text-sm font-medium transition-colors hover:text-primary">
+              Admin Dashboard
+            </a>
+          )}
+          {user && user.role === "user" && (
+           <>
+            <a href="/user-dashboard" className="text-sm font-medium transition-colors hover:text-primary">
+           User Dashboard
+         </a>
+         </>
+          )}
+
+          {/* Authentication Links */}
           {token ? (
             <button
               onClick={handleLogout}
@@ -70,16 +82,10 @@ const Navbar = () => {
             </button>
           ) : (
             <>
-              <a
-                href="/login"
-                className="text-sm font-medium transition-colors hover:text-primary"
-              >
+              <a href="/login" className="text-sm font-medium transition-colors hover:text-primary">
                 Login
               </a>
-              <a
-                href="/signup"
-                className="text-sm font-medium transition-colors hover:text-primary"
-              >
+              <a href="/signup" className="text-sm font-medium transition-colors hover:text-primary">
                 Sign Up
               </a>
             </>
@@ -91,6 +97,7 @@ const Navbar = () => {
             {darkMode ? <MoonIcon className="h-5 w-5" /> : <SunIcon className="h-5 w-5" />}
           </button>
         </nav>
+        {/* Mobile Menu */}
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="md:hidden">
@@ -112,20 +119,29 @@ const Navbar = () => {
               </SheetClose>
             </div>
             <nav className="grid gap-4 px-4 py-6">
-              <a
-                href="/about-us"
-                className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
-              >
+              {/* Common Links */}
+              <a href="/about-us" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
                 <InfoIcon className="h-5 w-5" />
                 About Us
               </a>
-              <a
-                href="/contact"
-                className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
-              >
+              <a href="/contact" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
                 <MailIcon className="h-5 w-5" />
                 Contact
               </a>
+
+              {/* Conditional Links Based on Role */}
+              {user && user.role === "admin" && (
+                <a href="/admin-dashboard" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+                  Admin Dashboard
+                </a>
+              )}
+              {user && user.role === "user" && (
+                <a href="/user-dashboard" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+                  User Dashboard
+                </a>
+              )}
+
+              {/* Authentication Links */}
               {token ? (
                 <button
                   onClick={handleLogout}
@@ -135,16 +151,10 @@ const Navbar = () => {
                 </button>
               ) : (
                 <>
-                  <a
-                    href="/login"
-                    className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
-                  >
+                  <a href="/login" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
                     Login
                   </a>
-                  <a
-                    href="/signup"
-                    className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
-                  >
+                  <a href="/signup" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
                     Sign Up
                   </a>
                 </>

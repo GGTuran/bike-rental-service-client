@@ -7,9 +7,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import sliderImage1 from "@/assets/images/basketball.jpg";
-import sliderImage2 from "@/assets/images/Adidas.jpg";
-import sliderImage3 from "@/assets/images/benjamin-hershey-qegSxvH9U9Y-unsplash.jpg";
+import sliderImage1 from "@/assets/images/black-white-dirt-bike.jpg";
+import sliderImage2 from "@/assets/images/cool-motorcycle-outdoors.jpg";
+import sliderImage3 from "@/assets/images/cool-motorcycle-presentation-outdoors.jpg";
 
 const HeroSection = () => {
 
@@ -18,20 +18,20 @@ const HeroSection = () => {
         {
           id: 1,
           image: sliderImage1,
-          title: "Big Summer Sale!",
-          description: "Get up to 50% off on all items",
+          title: "Off-Road Adventure",
+          description: "Experience the thrill of off-road riding with our rugged dirt bikes",
         },
         {
           id: 2,
           image: sliderImage2,
-          title: "Exclusive Offer",
-          description: "Buy Adidas Sambas with 15% Off",
+          title: "Cruising the Open Road",
+          description: "Cruise down the highway in style with our sleek and powerful motorcycles",
         },
         {
           id: 3,
           image: sliderImage3,
-          title: "New Arrivals",
-          description: "Check out our latest collection",
+          title: "Bold and Beautiful",
+          description: "Discover the ultimate in motorcycle design and performance.",
         },
       ];
   
