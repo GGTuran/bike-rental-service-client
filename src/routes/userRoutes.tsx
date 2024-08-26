@@ -4,5 +4,6 @@ export const userPaths = [
     {
         path:'all-bikes',
         element:<AllBikes></AllBikes>
-    }
+    },
+    
 ]

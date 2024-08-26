@@ -23,7 +23,7 @@ const AllBikes = () => {
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="text-3xl text-center font-medium mb-6">All Bikes</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {bikes.data.slice(0, 4).map((bike: { _id: any }): any => (
+          {bikes.data.map((bike: { _id: any }): any => (
             <BikeCard bike={bike} key={bike._id}></BikeCard>
           ))}
         </div>

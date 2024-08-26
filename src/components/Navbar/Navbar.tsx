@@ -60,7 +60,7 @@ const Navbar = () => {
 
           {/* Conditional Links Based on Role */}
           {user && user.role === "admin" && (
-            <a href="/admin-dashboard" className="text-sm font-medium transition-colors hover:text-primary">
+            <a href="/get-me" className="text-sm font-medium transition-colors hover:text-primary">
               Admin Dashboard
             </a>
           )}
@@ -135,12 +135,12 @@ const Navbar = () => {
 
               {/* Conditional Links Based on Role */}
               {user && user.role === "admin" && (
-                <a href="/admin-dashboard" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+                <a href="/get-me" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
                   Admin Dashboard
                 </a>
               )}
               {user && user.role === "user" && (
-                <a href="/user-dashboard" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+                <a href="/get-me" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
                   User Dashboard
                 </a>
               )}

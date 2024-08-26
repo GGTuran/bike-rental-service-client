@@ -12,10 +12,10 @@ const userApi = baseApi.injectEndpoints({
         updateProfile: builder.mutation({
             query: (userInfo) => ({
                 url:`/users/me`,
-                method: 'PUT',
+                method: 'PATCH',
                 body: userInfo,
             }),
-            // invalidatesTags: ['User']
+            // invalidatesTags: ['users']
         })
        
         })

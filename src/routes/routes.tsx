@@ -52,7 +52,13 @@ const router = createBrowserRouter([
     },
     {
         path:'/get-me',
-        element:<GetME></GetME>
+        element:<App></App>,
+        children:[
+            {
+                index:true,
+                element:<GetME></GetME>
+            }
+        ]
     },
     
     {
