@@ -13,6 +13,7 @@ import { routeGenerator } from "@/utils/routesGenerator";
 import { createBrowserRouter } from "react-router-dom";
 import { userPaths } from "./userRoutes";
 import BikeDetails from "@/pages/BikeDetails";
+import { adminPaths } from "./adminRoutes";
 
 const router = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         path:'/admin',
         element:<App></App>,
         errorElement:<Error></Error>,
-        // children:
+        children: routeGenerator(adminPaths),
     },
     {
         path:'/users',

@@ -14,7 +14,11 @@ import MoonIcon from "@/assets/icons/MoonIcon";
 import SunIcon from "@/assets/icons/SunIcon";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { logout, selectCurrentUser, useCurrentToken } from "@/redux/features/auth/authSlice";
+import {
+  logout,
+  selectCurrentUser,
+  useCurrentToken,
+} from "@/redux/features/auth/authSlice";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
@@ -48,32 +52,63 @@ const Navbar = () => {
         </a>
         <nav className="hidden items-center gap-6 md:flex">
           {/* Common Links */}
-          <a href="/" className="text-sm font-medium transition-colors hover:text-primary">
+          <a
+            href="/"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
             Home
           </a>
-          <a href="/about-us" className="text-sm font-medium transition-colors hover:text-primary">
+          <a
+            href="/about-us"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
             About Us
           </a>
-          <a href="/contact" className="text-sm font-medium transition-colors hover:text-primary">
+          <a
+            href="/contact"
+            className="text-sm font-medium transition-colors hover:text-primary"
+          >
             Contact
           </a>
 
           {/* Conditional Links Based on Role */}
           {user && user.role === "admin" && (
-            <a href="/get-me" className="text-sm font-medium transition-colors hover:text-primary">
+            <>
+            <a
+              href="/get-me"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
               Admin Dashboard
             </a>
+            <a
+              href="/admin/manage-bikes"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
+              Manage Bikes
+            </a>
+            </>
           )}
           {user && user.role === "user" && (
-           <>
-            <a href="/get-me" className="text-sm font-medium transition-colors hover:text-primary">
-           User Dashboard
-         </a>
-            <a href="/users/all-bikes" className="text-sm font-medium transition-colors hover:text-primary">
-           Bikes
-         </a>
-            
-         </>
+            <>
+              <a
+                href="/get-me"
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                User Dashboard
+              </a>
+              <a
+                href="/users/all-bikes"
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                Bikes
+              </a>
+              <a
+                href="/users/my-rentals"
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                Bookings
+              </a>
+            </>
           )}
 
           {/* Authentication Links */}
@@ -86,10 +121,16 @@ const Navbar = () => {
             </button>
           ) : (
             <>
-              <a href="/login" className="text-sm font-medium transition-colors hover:text-primary">
+              <a
+                href="/login"
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
                 Login
               </a>
-              <a href="/signup" className="text-sm font-medium transition-colors hover:text-primary">
+              <a
+                href="/signup"
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
                 Sign Up
               </a>
             </>
@@ -98,7 +139,11 @@ const Navbar = () => {
             onClick={toggleDarkMode}
             className="text-sm font-medium transition-colors hover:text-primary"
           >
-            {darkMode ? <MoonIcon className="h-5 w-5" /> : <SunIcon className="h-5 w-5" />}
+            {darkMode ? (
+              <MoonIcon className="h-5 w-5" />
+            ) : (
+              <SunIcon className="h-5 w-5" />
+            )}
           </button>
         </nav>
         {/* Mobile Menu */}
@@ -124,25 +169,59 @@ const Navbar = () => {
             </div>
             <nav className="grid gap-4 px-4 py-6">
               {/* Common Links */}
-              <a href="/about-us" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+              <a
+                href="/about-us"
+                className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+              >
                 <InfoIcon className="h-5 w-5" />
                 About Us
               </a>
-              <a href="/contact" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+              <a
+                href="/contact"
+                className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+              >
                 <MailIcon className="h-5 w-5" />
                 Contact
               </a>
 
               {/* Conditional Links Based on Role */}
               {user && user.role === "admin" && (
-                <a href="/get-me" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+                <>
+                <a
+                  href="/get-me"
+                  className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+                >
                   Admin Dashboard
                 </a>
+                <a
+              href="/admin/manage-bikes"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
+              Manage Bikes
+            </a>
+                </>
               )}
               {user && user.role === "user" && (
-                <a href="/get-me" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+                <>
+                <a
+                  href="/get-me"
+                  className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+                >
                   User Dashboard
                 </a>
+                <a
+                href="/users/all-bikes"
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                Bikes
+              </a>
+              <a
+                href="/users/my-rentals"
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                Bookings
+              </a>
+                </>
               )}
 
               {/* Authentication Links */}
@@ -155,10 +234,16 @@ const Navbar = () => {
                 </button>
               ) : (
                 <>
-                  <a href="/login" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+                  <a
+                    href="/login"
+                    className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+                  >
                     Login
                   </a>
-                  <a href="/signup" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+                  <a
+                    href="/signup"
+                    className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+                  >
                     Sign Up
                   </a>
                 </>
@@ -167,7 +252,11 @@ const Navbar = () => {
                 onClick={toggleDarkMode}
                 className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
               >
-                {darkMode ? <MoonIcon className="h-5 w-5" /> : <SunIcon className="h-5 w-5" />}
+                {darkMode ? (
+                  <MoonIcon className="h-5 w-5" />
+                ) : (
+                  <SunIcon className="h-5 w-5" />
+                )}
               </button>
             </nav>
           </SheetContent>
