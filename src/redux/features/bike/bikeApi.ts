@@ -17,11 +17,14 @@ const bikeApi = baseApi.injectEndpoints({
             providesTags: ['bikes'],
         }),
         addBike: builder.mutation({
-            query:(bikeInfo) => ({
-                url: `/bikes`,
-                method: 'POST',
-                body: bikeInfo,
-            }),
+            query:(bikeInfo) => {
+                console.log('from base api=>', bikeInfo);
+                return{
+                    url: `/bikes`,
+                    method: 'POST',
+                    body: bikeInfo,
+                }
+            },
             invalidatesTags: ['bikes'],
         }),
         updateBike: builder.mutation({
@@ -29,7 +32,7 @@ const bikeApi = baseApi.injectEndpoints({
                 console.log('from base api', id,bikeInfo)
                 return {
                     url: `/bikes/${id}`,
-                    method: 'PUT',
+                    method: 'PATCH',
                     body: bikeInfo,
                 };
             },

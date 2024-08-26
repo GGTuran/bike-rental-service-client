@@ -3,6 +3,7 @@
 import { useDeleteBikeMutation } from "@/redux/features/bike/bikeApi";
 import { TBike } from "@/types/bike.interface";
 import toast, { Toaster } from "react-hot-toast";
+import UpdateBikeModal from "./UpdateBikeModal";
 
 
 const ManageCard = ({
@@ -75,6 +76,7 @@ const ManageCard = ({
             <div className="mt-4 flex justify-between items-center">
               {/* component for update modal */}
               {/* <UpdateProductModal productId={_id}></UpdateProductModal> */}
+              <UpdateBikeModal bikeId={_id}></UpdateBikeModal>
               <button
                 onClick={removeProduct}
                 className="px-4 py-2 bg-red-300 text-black rounded-lg hover:bg-red-500 transition-colors duration-300"
