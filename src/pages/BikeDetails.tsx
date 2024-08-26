@@ -1,46 +1,64 @@
 import Loading from "@/components/Loading/Loading";
 import { useGetBikeByIdQuery } from "@/redux/features/bike/bikeApi";
 import { useAppDispatch } from "@/redux/hooks";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { useBookBikeMutation } from "@/redux/features/booking/bookingApi";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 
 
 const BikeDetails = () => {
-    const { bikeId } = useParams();
-    const {
-      data: bike,
-      isLoading,
-      isError,
-    } = useGetBikeByIdQuery(bikeId);
-  
-    // console.log(bike?.data?.isAvailable)
-    const available = bike?.data?.isAvailable;
-    console.log(available)
 
-    
+  const { bikeId } = useParams();
+  const { data: bike, isLoading, isError } = useGetBikeByIdQuery(bikeId);
+  const [createRental] = useBookBikeMutation();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [startTime, setStartTime] = useState("");
+  const navigate = useNavigate();
 
-    const dispatch = useAppDispatch();
-    
-  
+  const handleBookNow = () => {
+    setIsDialogOpen(true);
+  };
 
-  
-    if (isLoading)
-      return (
-        <div className=" m-10 flex justify-center items-center">
-          <Loading></Loading>
-        </div>
-      );
-    if (isError)
-      return (
-        <div className="text-center mt-8 text-red-500">
-          Error fetching bike.
-        </div>
-      );
-    if (!bike)
-      return <div className="text-center mt-8">Product not found.</div>;
-  
-    // const isButtonDisabled =
-    //   cartItem && cartItem.quantity >= bike.data.stockQuantity;
+  const handleConfirm = async () => {
+    try {
+      const rentalData = {
+        bikeId: bikeId,
+        startTime: new Date(startTime),
+      };
+      await createRental(rentalData).unwrap();
+      toast.success("Booking successful! Redirecting to payment page...");
+      // Redirect to payment page 
+      navigate('/');
+    } catch (error) {
+      toast.error("Error booking bike. Please try again.");
+    } finally {
+      setIsDialogOpen(false);
+    }
+  };
+
+  const handleCancel = () => {
+    setIsDialogOpen(false);
+  };
+
+  if (isLoading) {
+    return (
+      <div className="m-10 flex justify-center items-center">
+        <Loading />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return <div className="text-center mt-8 text-red-500">Error fetching bike.</div>;
+  }
+
+  if (!bike) {
+    return <div className="text-center mt-8">Product not found.</div>;
+  }
   
     return (
       <div className="m-10  mx-auto px-4 mt-8">
@@ -61,23 +79,42 @@ const BikeDetails = () => {
                 Description: {bike.data.description}
               </p>
               <p className="text-black mb-2">Model: {bike.data.model}</p>
-              <p className="text-black mb-2">
-                Available: {bike?.data?.isAvailable}
-              </p>
+              <p className="text-black mb-2">Available: {bike.data.isAvailable ? "Yes" : "No"}</p>
               {/* <span className="flex gap-2">{Rating(bike.data.rating)}</span> */}
   
               <p className="text-black mb-2">Price: ${bike.data.pricePerHour}</p>
               
-              <button
-                // onClick={handleAddToCart}
-                // disabled={isButtonDisabled}
-                className="px-4 py-2 bg-gray-300 text-black rounded-lg hover:bg-gray-500 transition-colors duration-300"
-              >Book Now
-                {/* {isButtonDisabled ? "Out of Stock" : "Add to Cart"} */}
-              </button>
+              <Button onClick={handleBookNow} className="px-4 py-2 bg-gray-300 text-black rounded-lg hover:bg-gray-500 transition-colors duration-300">
+              Book Now
+            </Button>
             </div>
           </div>
         </div>
+            {/* Dialog for booking */}
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogTrigger asChild>
+          <Button className="hidden">Open Dialog</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Book Bike</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Bike ID</label>
+              <Input type="text" value={bikeId} readOnly />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Start Time</label>
+              <Input type="datetime-local" value={startTime} onChange={(e) => setStartTime(e.target.value)} />
+            </div>
+          </div>
+          <DialogFooter className="mt-4 flex justify-end space-x-2">
+            <Button variant="ghost" onClick={handleCancel}>Cancel</Button>
+            <Button onClick={handleConfirm}>Pay & Confirm</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       </div>
     );
   };
