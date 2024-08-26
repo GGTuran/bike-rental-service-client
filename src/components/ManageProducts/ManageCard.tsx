@@ -21,6 +21,7 @@ const ManageCard = ({
 
   const removeProduct = () => {
     deleteProduct(_id);
+    // console.log(_id);
     toast.success("Product deleted successfully");
   };
 
