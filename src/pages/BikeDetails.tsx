@@ -13,7 +13,9 @@ const BikeDetails = () => {
       isError,
     } = useGetBikeByIdQuery(bikeId);
   
-    // console.log(bike.data.isAvailable);
+    // console.log(bike?.data?.isAvailable)
+    const available = bike?.data?.isAvailable;
+    console.log(available)
 
     
 
@@ -60,7 +62,7 @@ const BikeDetails = () => {
               </p>
               <p className="text-black mb-2">Model: {bike.data.model}</p>
               <p className="text-black mb-2">
-                Available: {bike.data.isAvailable}
+                Available: {bike?.data?.isAvailable}
               </p>
               {/* <span className="flex gap-2">{Rating(bike.data.rating)}</span> */}
   

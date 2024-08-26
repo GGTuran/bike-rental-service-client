@@ -11,7 +11,7 @@ const bikeApi = baseApi.injectEndpoints({
         }),
         getBikeById: builder.query({
             query: (id) => ({
-                url:`bikes/${id}`,
+                url:`/bikes/${id}`,
                 method: 'GET',
             }),
             providesTags: ['bikes'],
