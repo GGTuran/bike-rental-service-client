@@ -6,6 +6,7 @@ import { JSX } from "react/jsx-runtime";
 import Loading from "../Loading/Loading";
 import ManageCard from "./ManageCard";
 import { TBike } from "@/types/bike.interface";
+import AddBikeModal from "./AddBikeModal";
 
 const BikeContainer = () => {
   //fetching data through rtk query
@@ -27,7 +28,7 @@ const BikeContainer = () => {
     <div className="m-10">
       <div className="flex m-10 justify-between mb-5">
         {/* addProduct */}
-        {/* <AddProductModal></AddProductModal> */}
+        <AddBikeModal></AddBikeModal>
         {/* updateProduct */}
       </div>
       <div className="">
