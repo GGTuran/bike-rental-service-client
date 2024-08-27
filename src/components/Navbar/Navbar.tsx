@@ -78,13 +78,19 @@ const Navbar = () => {
               href="/get-me"
               className="text-sm font-medium transition-colors hover:text-primary"
             >
-              Admin Dashboard
+            Profile
             </a>
             <a
               href="/admin/manage-bikes"
               className="text-sm font-medium transition-colors hover:text-primary"
             >
               Manage Bikes
+            </a>
+            <a
+              href="/admin/user-management"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
+              Users
             </a>
             </>
           )}
@@ -198,6 +204,12 @@ const Navbar = () => {
               className="text-sm font-medium transition-colors hover:text-primary"
             >
               Manage Bikes
+            </a>
+                <a
+              href="/admin/user-management"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
+              Users
             </a>
                 </>
               )}
