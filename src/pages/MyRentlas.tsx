@@ -2,7 +2,7 @@ import Loading from "@/components/Loading/Loading";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useGetBookingsQuery } from "@/redux/features/booking/bookingApi";
-import { useState } from "react";
+import { Key, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -46,7 +46,7 @@ console.log(data);
           {unpaidRentals.length === 0 ? (
             <p>No unpaid rentals found.</p>
           ) : (
-            unpaidRentals.map((rental) => (
+            unpaidRentals.map((rental: { id: string; bike: { name: any; }; startTime: string | number | Date; returnTime: string | number | Date; totalCost: any; isPaid: any; }) => (
                 <div key={rental.id} className="p-4 border-b">
                 <h3>{rental.bike?.name || 'Bike name not available'}</h3>
                 <p>
@@ -72,7 +72,7 @@ console.log(data);
           {paidRentals.length === 0 ? (
             <p>No paid rentals found.</p>
           ) : (
-            paidRentals.map((rental) => (
+            paidRentals.map((rental: { id: string; bike: { name: any; }; startTime: string | number | Date; returnTime: string | number | Date; totalCost: any; isPaid: any; }) => (
                 <div key={rental.id} className="p-4 border-b">
                 <h3>{rental.bike?.name || 'Bike name not available'}</h3>
                 <p>

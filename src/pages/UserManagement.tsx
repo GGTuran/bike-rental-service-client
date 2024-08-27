@@ -39,37 +39,37 @@ const UserManagement = () => {
   if (error) return <div>Something went wrong. Please try again.</div>;
 
   return (
-    <div className="p-4">
+    <div className="p-4 max-w-7xl mx-auto">
       <Toaster />
-      <h2 className="text-xl font-semibold mb-4">User Management</h2>
+      <h2 className="text-2xl font-semibold mb-4">User Management</h2>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-200">
-          <thead className="bg-gray-100 border-b border-gray-200">
+        <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+          <thead className="ltr:text-left rtl:text-right">
             <tr>
-              <th className="py-2 px-4 text-left">Name</th>
-              <th className="py-2 px-4 text-left">Email</th>
-              <th className="py-2 px-4 text-left">Role</th>
-              <th className="py-2 px-4 text-center">Actions</th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Name</th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Email</th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Role</th>
+              <th className="px-4 py-2"></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="divide-y divide-gray-200">
             {users?.data?.map((user) => (
-              <tr key={user._id} className="border-b">
-                <td className="py-2 px-4">{user.name}</td>
-                <td className="py-2 px-4">{user.email}</td>
-                <td className="py-2 px-4">{user.role}</td>
-                <td className="py-2 px-4 text-center">
+              <tr key={user._id}>
+                <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{user.name}</td>
+                <td className="whitespace-nowrap px-4 py-2 text-gray-700">{user.email}</td>
+                <td className="whitespace-nowrap px-4 py-2 text-gray-700">{user.role}</td>
+                <td className="whitespace-nowrap px-4 py-2 text-center flex justify-center space-x-2">
                   <button
                     onClick={() => handlePromoteUser(user?._id)}
-                    className="bg-blue-500 text-white px-2 py-1 rounded mr-2"
+                    className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition duration-150"
                   >
-                    Promote to Admin
+                    Promote
                   </button>
                   <button
                     onClick={() => handleDeleteUser(user?._id)}
-                    className="bg-red-500 text-white px-2 py-1 rounded"
+                    className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition duration-150"
                   >
-                    Delete User
+                    Delete
                   </button>
                 </td>
               </tr>
