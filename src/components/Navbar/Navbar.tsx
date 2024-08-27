@@ -92,6 +92,12 @@ const Navbar = () => {
             >
               Users
             </a>
+            <a
+              href="/admin/booking-management"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
+            All  Bookings
+            </a>
             </>
           )}
           {user && user.role === "user" && (
@@ -210,6 +216,12 @@ const Navbar = () => {
               className="text-sm font-medium transition-colors hover:text-primary"
             >
               Users
+            </a>
+            <a
+              href="/admin/booking-management"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
+              All Bookings
             </a>
                 </>
               )}

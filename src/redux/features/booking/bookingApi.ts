@@ -12,7 +12,7 @@ const bookingApi = baseApi.injectEndpoints({
         }),
         getBookings: builder.query({
             query: () => ({
-                url: `/rentals`,
+                url: `/rentals/user`,
                 method: 'GET',
             }),
             providesTags: ['bookings'],
@@ -23,10 +23,17 @@ const bookingApi = baseApi.injectEndpoints({
                 method: 'PUT',
             }),
             invalidatesTags: ['bookings'],
-        })
+        }),
+        allBookings: builder.query({
+            query: () => ({
+                url: `/rentals/admin`,
+                method: 'GET',
+            }),
+            providesTags: ['bookings'],
+        }),
         })
     })
 
   
 
-export const { useBookBikeMutation, useGetBookingsQuery, useReturnBikeMutation } = bookingApi;
+export const { useBookBikeMutation, useGetBookingsQuery, useReturnBikeMutation, useAllBookingsQuery } = bookingApi;
