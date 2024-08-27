@@ -64,12 +64,12 @@ const AboutUs = () => {
       </section>
 
       {/* Our Team Section */}
-      <section className="bg-white py-12">
+      <section className=" py-12">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-semibold mb-8">Meet the Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="bg-gray-100 p-6 rounded-lg shadow-lg">
+              <div key={index} className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg">
                 <img
                   src={member.image}
                   alt={member.name}
@@ -79,7 +79,7 @@ const AboutUs = () => {
                   {member.name}
                 </h3>
                 <p className="text-blue-700 text-center">{member.role}</p>
-                <p className="text-gray-700 mt-4">{member.bio}</p>
+                <p className=" mt-4">{member.bio}</p>
               </div>
             ))}
           </div>

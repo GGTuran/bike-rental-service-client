@@ -12,36 +12,28 @@ import InfoIcon from "@/assets/icons/InfoIcon";
 import MailIcon from "@/assets/icons/MailIcon";
 import MoonIcon from "@/assets/icons/MoonIcon";
 import SunIcon from "@/assets/icons/SunIcon";
-import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
   logout,
   selectCurrentUser,
   useCurrentToken,
 } from "@/redux/features/auth/authSlice";
+import { useTheme } from "../ThemeProvider/ThemeProvider";
 
 const Navbar = () => {
+  const { theme, setTheme } = useTheme(); // Destructure theme and setTheme
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectCurrentUser);
   const token = useAppSelector(useCurrentToken);
-
-  const [darkMode, setDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setDarkMode((prevMode) => !prevMode);
-  };
 
   const handleLogout = () => {
     dispatch(logout());
   };
 
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
-    }
-  }, [darkMode]);
+  // Toggle dark mode using setTheme function
+  const toggleDarkMode = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   return (
     <header className="bg-background text-foreground shadow-sm">
@@ -74,30 +66,30 @@ const Navbar = () => {
           {/* Conditional Links Based on Role */}
           {user && user.role === "admin" && (
             <>
-            <a
-              href="/get-me"
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-            Profile
-            </a>
-            <a
-              href="/admin/manage-bikes"
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              Manage Bikes
-            </a>
-            <a
-              href="/admin/user-management"
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              Users
-            </a>
-            <a
-              href="/admin/booking-management"
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-            All  Bookings
-            </a>
+              <a
+                href="/get-me"
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                Profile
+              </a>
+              <a
+                href="/admin/manage-bikes"
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                Manage Bikes
+              </a>
+              <a
+                href="/admin/user-management"
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                Users
+              </a>
+              <a
+                href="/admin/booking-management"
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                All Bookings
+              </a>
             </>
           )}
           {user && user.role === "user" && (
@@ -151,7 +143,7 @@ const Navbar = () => {
             onClick={toggleDarkMode}
             className="text-sm font-medium transition-colors hover:text-primary"
           >
-            {darkMode ? (
+            {theme === "dark" ? (  // Determine icon based on current theme
               <MoonIcon className="h-5 w-5" />
             ) : (
               <SunIcon className="h-5 w-5" />
@@ -199,52 +191,52 @@ const Navbar = () => {
               {/* Conditional Links Based on Role */}
               {user && user.role === "admin" && (
                 <>
-                <a
-                  href="/get-me"
-                  className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
-                >
-                  Admin Dashboard
-                </a>
-                <a
-              href="/admin/manage-bikes"
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              Manage Bikes
-            </a>
-                <a
-              href="/admin/user-management"
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              Users
-            </a>
-            <a
-              href="/admin/booking-management"
-              className="text-sm font-medium transition-colors hover:text-primary"
-            >
-              All Bookings
-            </a>
+                  <a
+                    href="/get-me"
+                    className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+                  >
+                    Admin Dashboard
+                  </a>
+                  <a
+                    href="/admin/manage-bikes"
+                    className="text-sm font-medium transition-colors hover:text-primary"
+                  >
+                    Manage Bikes
+                  </a>
+                  <a
+                    href="/admin/user-management"
+                    className="text-sm font-medium transition-colors hover:text-primary"
+                  >
+                    Users
+                  </a>
+                  <a
+                    href="/admin/booking-management"
+                    className="text-sm font-medium transition-colors hover:text-primary"
+                  >
+                    All Bookings
+                  </a>
                 </>
               )}
               {user && user.role === "user" && (
                 <>
-                <a
-                  href="/get-me"
-                  className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
-                >
-                  User Dashboard
-                </a>
-                <a
-                href="/users/all-bikes"
-                className="text-sm font-medium transition-colors hover:text-primary"
-              >
-                Bikes
-              </a>
-              <a
-                href="/users/my-rentals"
-                className="text-sm font-medium transition-colors hover:text-primary"
-              >
-                Bookings
-              </a>
+                  <a
+                    href="/get-me"
+                    className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+                  >
+                    User Dashboard
+                  </a>
+                  <a
+                    href="/users/all-bikes"
+                    className="text-sm font-medium transition-colors hover:text-primary"
+                  >
+                    Bikes
+                  </a>
+                  <a
+                    href="/users/my-rentals"
+                    className="text-sm font-medium transition-colors hover:text-primary"
+                  >
+                    Bookings
+                  </a>
                 </>
               )}
 
@@ -276,7 +268,7 @@ const Navbar = () => {
                 onClick={toggleDarkMode}
                 className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
               >
-                {darkMode ? (
+                {theme === "dark" ? (
                   <MoonIcon className="h-5 w-5" />
                 ) : (
                   <SunIcon className="h-5 w-5" />

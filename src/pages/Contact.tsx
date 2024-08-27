@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <div className="m-10 mt-3">
       <div>
-        <section className="bg-gray-100 rounded-2xl">
+        <section className="bg-gray-100 dark:bg-gray-800 rounded-2xl">
           <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -29,7 +29,7 @@ const Contact = () => {
                   transition={{ delay: 0.3, duration: 0.5 }}
                   className="mt-5"
                 >
-                  <a href="#" className="text-2xl font-medium text-black">
+                  <a href="#" className="text-2xl font-medium ">
                     {" "}
                     0151 475 4450{" "}
                   </a>

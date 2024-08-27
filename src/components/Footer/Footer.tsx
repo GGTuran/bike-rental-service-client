@@ -1,9 +1,10 @@
 import MountainIcon from "@/assets/icons/MountainIcon";
+import { Link } from "react-router-dom";
 
 
 const Footer = () => {
   return (
-    <footer className="bg-white">
+    <footer className="bg-white dark:bg-gray-800">
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="lg:flex lg:items-start lg:gap-8">
           <div>
@@ -13,11 +14,11 @@ const Footer = () => {
           <div className="mt-8 grid grid-cols-2 gap-8 lg:mt-0 lg:grid-cols-5 lg:gap-y-16">
             <div className="col-span-2">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">
+                <h2 className="text-2xl font-bold ">
                   Get the latest news!
                 </h2>
 
-                <p className="mt-4 text-gray-500">
+                <p className="mt-4 ">
                   Join our community of sports enthusiasts and embrace a
                   lifestyle of excellence.
                 </p>
@@ -47,13 +48,13 @@ const Footer = () => {
             </div>
 
             <div className="col-span-2 sm:col-span-1">
-              <p className="font-medium text-gray-900">Services</p>
+              <p className="font-medium ">Services</p>
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     1on1 Coaching{" "}
@@ -63,7 +64,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     Company Review{" "}
@@ -73,7 +74,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     Accounts Review{" "}
@@ -83,7 +84,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     HR Consulting{" "}
@@ -93,7 +94,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     SEO Optimisation{" "}
@@ -103,23 +104,23 @@ const Footer = () => {
             </div>
 
             <div className="col-span-2 sm:col-span-1">
-              <p className="font-medium text-gray-900">Company</p>
+              <p className="font-medium ">Company</p>
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
-                  {/* <Link
+                  <Link
                     to="/about-us"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     About{" "}
-                  </Link> */}
+                  </Link>
                 </li>
 
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     Meet the Team{" "}
@@ -129,7 +130,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     Accounts Review{" "}
@@ -139,13 +140,13 @@ const Footer = () => {
             </div>
 
             <div className="col-span-2 sm:col-span-1">
-              <p className="font-medium text-gray-900">Helpful Links</p>
+              <p className="font-medium ">Helpful Links</p>
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     Contact{" "}
@@ -155,7 +156,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     FAQs{" "}
@@ -165,7 +166,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     Live Chat{" "}
@@ -175,13 +176,13 @@ const Footer = () => {
             </div>
 
             <div className="col-span-2 sm:col-span-1">
-              <p className="font-medium text-gray-900">Legal</p>
+              <p className="font-medium ">Legal</p>
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     Accessibility{" "}
@@ -191,7 +192,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     Returns Policy{" "}
@@ -201,7 +202,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     Refund Policy{" "}
@@ -211,7 +212,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     Hiring Statistics{" "}
@@ -221,13 +222,13 @@ const Footer = () => {
             </div>
 
             <div className="col-span-2 sm:col-span-1">
-              <p className="font-medium text-gray-900">Downloads</p>
+              <p className="font-medium ">Downloads</p>
 
               <ul className="mt-6 space-y-4 text-sm">
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     Marketing Calendar{" "}
@@ -237,7 +238,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     SEO Infographics{" "}
@@ -252,7 +253,7 @@ const Footer = () => {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className=" transition hover:opacity-75"
                 >
                   <span className="sr-only">Facebook</span>
 
@@ -276,7 +277,7 @@ const Footer = () => {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className=" transition hover:opacity-75"
                 >
                   <span className="sr-only">Instagram</span>
 
@@ -300,7 +301,7 @@ const Footer = () => {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className=" transition hover:opacity-75"
                 >
                   <span className="sr-only">Twitter</span>
 
@@ -320,7 +321,7 @@ const Footer = () => {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className=" transition hover:opacity-75"
                 >
                   <span className="sr-only">GitHub</span>
 
@@ -344,7 +345,7 @@ const Footer = () => {
                   href="#"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-700 transition hover:opacity-75"
+                  className=" transition hover:opacity-75"
                 >
                   <span className="sr-only">Dribbble</span>
 
@@ -368,7 +369,7 @@ const Footer = () => {
 
         <div className="mt-8 border-t border-gray-100 pt-8">
           <div className="sm:flex sm:justify-between">
-            <p className="text-xs text-gray-500">
+            <p className="text-xs ">
               &copy; 2022. Company Name. All rights reserved.
             </p>
 
@@ -376,7 +377,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-500 transition hover:opacity-75"
+                  className=" transition hover:opacity-75"
                 >
                   {" "}
                   Terms & Conditions{" "}
@@ -386,7 +387,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-500 transition hover:opacity-75"
+                  className=" transition hover:opacity-75"
                 >
                   {" "}
                   Privacy Policy{" "}
@@ -396,7 +397,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-500 transition hover:opacity-75"
+                  className=" transition hover:opacity-75"
                 >
                   {" "}
                   Cookies{" "}

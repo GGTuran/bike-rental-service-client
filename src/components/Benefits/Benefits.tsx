@@ -22,7 +22,7 @@ const benefits = [
 
 const Benefits = () => {
   return (
-    <section className="bg-white py-16">
+    <section className=" py-16">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Why Choose Us?</h2>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -30,7 +30,7 @@ const Benefits = () => {
             <div key={index} className="flex flex-col items-center text-center">
               <CheckCircle className="text-primary text-3xl mb-4" />
               <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-              <p className="text-gray-700">{benefit.description}</p>
+              <p className="">{benefit.description}</p>
             </div>
           ))}
         </div>

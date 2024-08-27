@@ -11,7 +11,7 @@ const milestones = [
 
 const HistoryMilestones = () => {
     return (
-        <section className="bg-gray-100 py-12">
+        <section className=" py-12">
             <div className="container mx-auto px-6">
                 <h2 className="text-3xl font-bold text-center mb-8">History & Milestones</h2>
                 <div className="relative">
@@ -22,8 +22,8 @@ const HistoryMilestones = () => {
                                 <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-primary rounded-full border-2 border-white"></div>
                                 <div className="ml-6">
                                     <p className="text-lg font-semibold text-primary">{milestone.date}</p>
-                                    <h3 className="text-xl font-bold text-gray-800">{milestone.title}</h3>
-                                    <p className="text-gray-600">{milestone.description}</p>
+                                    <h3 className="text-xl font-bold ">{milestone.title}</h3>
+                                    <p className="">{milestone.description}</p>
                                 </div>
                             </li>
                         ))}

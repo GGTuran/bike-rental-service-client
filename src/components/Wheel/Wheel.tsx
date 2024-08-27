@@ -2,8 +2,12 @@ import { useAppDispatch } from "@/redux/hooks";
 import "./index.css";
 import WheelComponent from "./WheelComponent";
 import { setCouponCode } from "@/redux/features/coupon/couponSlice";
+import toast, { Toaster } from "react-hot-toast";
+import { useState } from "react";
+import CouponModal from "../CouponModal/CouponModal";
 
 const Wheel = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useAppDispatch();
   const segments = [
     "better luck next time",
@@ -49,14 +53,17 @@ const Wheel = () => {
     // If a valid discount percentage is found, set it as the coupon code
     const discountValue = discountMatch[1];
     dispatch(setCouponCode(discountValue)); // Store the percentage without the '%' sign
+    toast.success(winner);
+    setIsModalOpen(true);
   } else {
     // If not a valid discount, handle it accordingly
-    console.log("No valid discount won");
+    toast.success(winner);
   }
   };
   return (
     <div className="flex justify-center">
-      <div>
+     <Toaster/>
+     <div>
         <WheelComponent
           segments={segments}
           segColors={segColors}
@@ -70,10 +77,9 @@ const Wheel = () => {
           upDuration={100}
           downDuration={1000}
         />
+      <CouponModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </div>
-      {/* <div>
-                <h1>Spin for discount</h1>
-               </div> */}
+     
     </div>
   );
 };

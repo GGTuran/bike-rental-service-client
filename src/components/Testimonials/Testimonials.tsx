@@ -16,17 +16,17 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="bg-gray-100 py-16">
+    <section className="bg-gray-100 dark:bg-gray-800 py-16">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Testimonials</h2>
         <div className="flex flex-wrap justify-center gap-8">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white shadow-md p-6 rounded-lg max-w-sm flex flex-col justify-between"
+              className="bg-white dark:bg-slate-600 shadow-md p-6 rounded-lg max-w-sm flex flex-col justify-between"
             >
-              <p className="text-gray-700 mb-4">"{testimonial.quote}"</p>
-              <p className="text-sm font-bold text-gray-900 text-right">- {testimonial.name}</p>
+              <p className=" mb-4">"{testimonial.quote}"</p>
+              <p className="text-sm font-bold  text-right">- {testimonial.name}</p>
             </div>
           ))}
         </div>
