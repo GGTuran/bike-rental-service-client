@@ -15,11 +15,32 @@ const userApi = baseApi.injectEndpoints({
                 method: 'PATCH',
                 body: userInfo,
             }),
-            // invalidatesTags: ['users']
+            invalidatesTags: ['users']
+        }),
+        getAllUsers: builder.query({
+            query: () => ({
+                url:`/users`,
+                method:'GET',
+            }),
+            providesTags: ['users'],
+        }),
+        promoteUser: builder.mutation({
+            query: (id) => ({
+                url: `/users/promote/${id}`,
+                method: 'PATCH',
+            }),
+            invalidatesTags: ['users'],
+        }),
+        deleteUser: builder.mutation({
+            query: (id) => ({
+                url: `/users/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['users'],
         })
        
         })
     })
 
-    export const { useGetProfileQuery, useUpdateProfileMutation } = userApi;
+    export const { useGetProfileQuery, useUpdateProfileMutation, useGetAllUsersQuery, usePromoteUserMutation, useDeleteUserMutation } = userApi;
 
