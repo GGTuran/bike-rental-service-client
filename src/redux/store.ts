@@ -13,6 +13,7 @@ import {
 import authSlice from './features/auth/authSlice';
 import storage from 'redux-persist/lib/storage';
 import couponSlice from './features/coupon/couponSlice';
+import comparisonSlice from './features/comparison/comparisonSlice';
 
 const persistConfig = {
   key: 'auth',
@@ -25,6 +26,7 @@ export const store = configureStore({
     [baseApi.reducerPath]: baseApi.reducer,
     auth: persistedAuthReducer,
     coupon: couponSlice,
+    comparison: comparisonSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
