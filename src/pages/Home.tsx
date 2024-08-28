@@ -5,6 +5,7 @@ import Testimonials from "@/components/Testimonials/Testimonials";
 import Benefits from "@/components/Benefits/Benefits";
 import Wheel from "@/components/Wheel/Wheel";
 import CompareList from "@/components/Comparison/CompareList";
+import Search from "@/components/SearchBar/Search";
 
 
 
@@ -13,6 +14,7 @@ const Home = () => {
         <div>
             <HeroSection></HeroSection>
             <FeaturedSection></FeaturedSection>
+            <Search></Search>
             {/* <WheelComponent></WheelComponent> */}
             <Wheel></Wheel>
             <CompareList></CompareList>

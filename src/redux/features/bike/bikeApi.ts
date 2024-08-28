@@ -3,9 +3,10 @@ import { baseApi } from "@/redux/api/baseApi";
 const bikeApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getAllBikes: builder.query({
-            query: () => ({
+            query: (searchTerm = '') => ({
                 url:`/bikes`,
                 method: 'GET',
+                params: { searchTerm },
             }),
             providesTags: ['bikes'],
         }),
