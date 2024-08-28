@@ -15,9 +15,9 @@ const Home = () => {
             <FeaturedSection></FeaturedSection>
             {/* <WheelComponent></WheelComponent> */}
             <Wheel></Wheel>
+            <CompareList></CompareList>
             <Testimonials></Testimonials>
             <Benefits></Benefits>
-            <CompareList></CompareList>
             <Contact></Contact>
         </div>
     );

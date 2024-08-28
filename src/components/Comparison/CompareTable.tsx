@@ -1,29 +1,44 @@
-import { useGetBikeByIdQuery } from "@/redux/features/bike/bikeApi";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { Table, TableBody, TableCell, TableHeader, TableRow } from "../ui/table";
-import { Button } from "../ui/button";
-import { clearComparison } from "@/redux/features/comparison/comparisonSlice";
-import { TBike } from "@/types/bike.interface";
+import React, { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { Table, TableBody, TableCell, TableHeader, TableRow } from '../ui/table';
+import { Button } from '../ui/button';
+import { clearComparison } from '@/redux/features/comparison/comparisonSlice';
+import { TBike } from '@/types/bike.interface';
+import { fetchBikeById } from '@/utils/utils';
 
 
 const CompareTable = () => {
   const dispatch = useAppDispatch();
   const selectedBikes = useAppSelector((state) => state.comparison.selectedBikes);
+  const [bikeArray, setBikeArray] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  // The query might need to handle multiple IDs, ensure it's handled correctly in your API
-  const { data: bikes, isLoading } = useGetBikeByIdQuery(selectedBikes, {
-    skip: selectedBikes.length === 0, // Skip query if no bikes are selected
-  });
+  useEffect(() => {
+    const fetchBikes = async () => {
+      setLoading(true);
+      try {
+        const bikePromises = selectedBikes.map((id) => fetchBikeById(id));
+        const bikes = await Promise.all(bikePromises);
+        setBikeArray(bikes);
+        console.log('Fetched bikes:', bikes);
+      } catch (error) {
+        console.error('Failed to fetch bikes:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  // Log the fetched data to inspect its structure
-  console.log(bikes);
+    if (selectedBikes.length > 0) {
+      fetchBikes();
+    } else {
+      setBikeArray([]);
+    }
+  }, [selectedBikes]);
 
-  if (isLoading) return <p>Loading bikes for comparison...</p>;
+  if (loading) return <p className='text-center'>Loading bikes for comparison...</p>;
 
-  // Ensure bikes.data is an array before mapping
-  const bikeArray: TBike[] = Array.isArray(bikes?.data) ? bikes?.data : [];
-
-  if (bikeArray.length === 0) return <p>No bikes selected for comparison.</p>;
+  if (bikeArray.length === 0) return <p className='text-center'>No bikes selected for comparison.</p>;
+  console.log('bike array', bikeArray[0])
 
   return (
     <div className="mt-4">
@@ -32,8 +47,8 @@ const CompareTable = () => {
         <TableHeader>
           <TableRow>
             <TableCell>Feature</TableCell>
-            {bikeArray.map((bike) => (
-              <TableCell key={bike._id}>{bike.name}</TableCell>
+            {bikeArray?.map((bike) => (
+              <TableCell key={bike?.data?._id}>{bike?.data?.name}</TableCell>
             ))}
           </TableRow>
         </TableHeader>
@@ -41,19 +56,23 @@ const CompareTable = () => {
           <TableRow>
             <TableCell>Price per Hour</TableCell>
             {bikeArray.map((bike) => (
-              <TableCell key={bike._id}>${bike.pricePerHour}</TableCell>
+              <TableCell key={bike?.data?._id}>${bike?.data?.pricePerHour}</TableCell>
             ))}
           </TableRow>
           <TableRow>
             <TableCell>CC</TableCell>
             {bikeArray.map((bike) => (
-              <TableCell key={bike._id}>{bike.cc}</TableCell>
+              <TableCell key={bike?.data?._id}>{bike?.data?.cc}</TableCell>
             ))}
           </TableRow>
           {/* Add more rows for each attribute */}
         </TableBody>
       </Table>
-      <Button variant="destructive" onClick={() => dispatch(clearComparison())} className="mt-4">
+      <Button
+        variant="destructive"
+        onClick={() => dispatch(clearComparison())}
+        className="mt-4"
+      >
         Clear All
       </Button>
     </div>

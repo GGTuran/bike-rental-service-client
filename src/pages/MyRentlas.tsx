@@ -22,8 +22,8 @@ const MyRentals = () => {
 
   // Function to handle payment
   const handlePayment = async(_id: string) => {
-    console.log(_id);
-    console.log(rentals.data.paymentSession.payment_url)
+    // console.log(_id);
+    // console.log(rentals.data.paymentSession.payment_url)
     window.location.href = rentals.data.paymentSession.payment_url
    
    
@@ -56,8 +56,9 @@ const MyRentals = () => {
   }
 
   const data = rentals.data.result;
-  const paidRentals = data?.filter((rental: { isPaid: boolean }) => rental.isPaid);
-  const unpaidRentals = data?.filter((rental: { isPaid: boolean }) => !rental.isPaid);
+  console.log(data)
+  const paidRentals = data?.filter((rental: { isReturned: boolean }) => rental.isReturned);
+  const unpaidRentals = data?.filter((rental: { isReturned: boolean }) => !rental.isReturned);
 
   return (
     <div className="p-6">
@@ -86,7 +87,7 @@ const MyRentals = () => {
                
                   <Button onClick={applyCoupon}>Apply Coupon</Button>
              
-                {!rental.isPaid && (
+                {!rental.isReturned && (
                   <Button onClick={() => handlePayment(rental._id)}>Pay</Button>
                 )}
               </div>

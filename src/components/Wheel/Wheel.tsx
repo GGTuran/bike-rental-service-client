@@ -61,9 +61,10 @@ const Wheel = () => {
   }
   };
   return (
-    <div className="flex justify-center">
+    <div className="wheel-container">
+       <h2 className="text-xl font-semibold mb-4">Spin to Win: Discover Your Discount!</h2>
      <Toaster/>
-     <div>
+     <div className="wheel-modal-container">
         <WheelComponent
           segments={segments}
           segColors={segColors}
@@ -73,11 +74,13 @@ const Wheel = () => {
           contrastColor="white"
           buttonText="Spin"
           isOnlyOnce={false}
-          size={290}
+          size={140}
           upDuration={100}
           downDuration={1000}
         />
+      <div>
       <CouponModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      </div>
       </div>
      
     </div>

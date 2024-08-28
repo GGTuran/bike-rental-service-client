@@ -15,6 +15,7 @@ import { userPaths } from "./userRoutes";
 import BikeDetails from "@/pages/BikeDetails";
 import { adminPaths } from "./adminRoutes";
 import SuccessPage from "@/pages/SuccessPage";
+import ProtectedRoute from "@/components/layout/ProtectedRoute";
 
 const router = createBrowserRouter([
     {
@@ -42,13 +43,13 @@ const router = createBrowserRouter([
     },
     {
         path:'/admin',
-        element:<App></App>,
+        element:<ProtectedRoute role="admin"><App></App></ProtectedRoute>,
         errorElement:<Error></Error>,
         children: routeGenerator(adminPaths),
     },
     {
         path:'/users',
-        element:<App></App>,
+        element:<ProtectedRoute role="user"><App></App></ProtectedRoute>,
         errorElement:<Error></Error>,
         children:routeGenerator(userPaths),
     },
