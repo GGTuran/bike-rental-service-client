@@ -2,7 +2,7 @@
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface ComparisonState {
+export interface ComparisonState {
   selectedBikes: string[];
 }
 

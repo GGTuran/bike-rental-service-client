@@ -44,7 +44,8 @@ const bikeApi = baseApi.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['bikes'],
-        })
+        }),
+       
        
         })
     })

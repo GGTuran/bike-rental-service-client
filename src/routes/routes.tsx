@@ -14,6 +14,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { userPaths } from "./userRoutes";
 import BikeDetails from "@/pages/BikeDetails";
 import { adminPaths } from "./adminRoutes";
+import SuccessPage from "@/pages/SuccessPage";
 
 const router = createBrowserRouter([
     {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
     {
         path:'/signup',
         element:<Register></Register>,
+    },
+    {
+        path:'/success',
+        element: <SuccessPage></SuccessPage>,
     },
     
 ]);

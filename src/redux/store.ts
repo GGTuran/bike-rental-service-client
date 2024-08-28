@@ -14,6 +14,7 @@ import authSlice from './features/auth/authSlice';
 import storage from 'redux-persist/lib/storage';
 import couponSlice from './features/coupon/couponSlice';
 import comparisonSlice from './features/comparison/comparisonSlice';
+import type { ComparisonState } from './features/comparison/comparisonSlice';
 
 const persistConfig = {
   key: 'auth',

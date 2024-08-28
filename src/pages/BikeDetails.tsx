@@ -29,10 +29,13 @@ const BikeDetails = () => {
         bikeId: bikeId,
         startTime: new Date(startTime),
       };
-      await createRental(rentalData).unwrap();
+      const res = await createRental(rentalData).unwrap();
+      // console.log(res);
+      //res.data.paymentSession.payment_url
       toast.success("Booking successful! Redirecting to payment page...");
       // Redirect to payment page 
-      navigate('/');
+      window.location.href = res?.data?.paymentSession.payment_url
+      // navigate('/');
     } catch (error) {
       toast.error("Error booking bike. Please try again.");
     } finally {

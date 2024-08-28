@@ -7,19 +7,26 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
+
+
 const MyRentals = () => {
   const { data: rentals, isLoading, isError } = useGetBookingsQuery('');
   const [activeTab, setActiveTab] = useState('unpaid');
   const [discountedRentals, setDiscountedRentals] = useState<any[]>([]); // State to hold rentals with discounted prices
   const navigate = useNavigate();
 
+
+
   // Access coupon code from Redux state
   const couponCode = useAppSelector((state) => state.coupon.code);
 
   // Function to handle payment
-  const handlePayment = (rentalId: string) => {
-    // Redirect to payment page with rental ID and apply coupon if available
-    navigate(`/payment/${rentalId}${couponCode ? `?coupon=${couponCode}` : ''}`);
+  const handlePayment = async(_id: string) => {
+    console.log(_id);
+    console.log(rentals.data.paymentSession.payment_url)
+    window.location.href = rentals.data.paymentSession.payment_url
+   
+   
   };
 
   // Function to apply coupon
@@ -48,7 +55,7 @@ const MyRentals = () => {
     return <div>Error fetching rentals.</div>;
   }
 
-  const data = rentals.data;
+  const data = rentals.data.result;
   const paidRentals = data?.filter((rental: { isPaid: boolean }) => rental.isPaid);
   const unpaidRentals = data?.filter((rental: { isPaid: boolean }) => !rental.isPaid);
 
@@ -66,21 +73,21 @@ const MyRentals = () => {
           {unpaidRentals.length === 0 ? (
             <p>No unpaid rentals found.</p>
           ) : (
-            unpaidRentals.map((rental: { id: string; bike: { name: string }; startTime: string | number | Date; returnTime: string | number | Date; totalCost: number; isPaid: boolean; }) => (
+            unpaidRentals.map((rental) => (
               <div key={rental.id} className="p-4 border-b">
-                <h3>{rental.bike?.name || 'Bike name not available'}</h3>
+                <h3>{rental.bikeId?.name || 'Bike name not available'}</h3>
                 <p>Start Time: {rental.startTime ? new Date(rental.startTime).toLocaleString() : "Not available"}</p>
                 <p>Return Time: {rental.returnTime ? new Date(rental.returnTime).toLocaleString() : "Not Returned"}</p>
                 <p>
                   Total Cost: $
-                  {discountedRentals.find(d => d.id === rental.id)?.discountedPrice.toFixed(2) ?? rental.totalCost.toFixed(2)}
+                  {discountedRentals.find(d => d.id === rental._id)?.discountedPrice.toFixed(2) ?? rental.totalCost.toFixed(2)}
                 </p>
                 {/* Show coupon application option */}
                
                   <Button onClick={applyCoupon}>Apply Coupon</Button>
              
                 {!rental.isPaid && (
-                  <Button onClick={() => handlePayment(rental.id)}>Pay</Button>
+                  <Button onClick={() => handlePayment(rental._id)}>Pay</Button>
                 )}
               </div>
             ))
@@ -92,7 +99,7 @@ const MyRentals = () => {
           {paidRentals.length === 0 ? (
             <p>No paid rentals found.</p>
           ) : (
-            paidRentals.map((rental: { id: string; bike: { name: string }; startTime: string | number | Date; returnTime: string | number | Date; totalCost: number; isPaid: boolean; }) => (
+            paidRentals.map((rental) => (
               <div key={rental.id} className="p-4 border-b">
                 <h3>{rental.bike?.name || 'Bike name not available'}</h3>
                 <p>Start Time: {rental.startTime ? new Date(rental.startTime).toLocaleString() : "Not available"}</p>
