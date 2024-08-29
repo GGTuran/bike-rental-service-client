@@ -12,11 +12,11 @@ const BikeCard = ({ bike }: any) => {
       whileTap={{ scale: 0.95 }}
       className="bg-card rounded-lg overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-xl"
     >
-      {/* <img
-        src={product.image}
-        alt={product.name}
+      <img
+        src={bike.image}
+        alt={bike.name}
         className="w-full h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 object-cover"
-      /> */}
+      />
       <div className="p-4">
         <h3 className="text-lg font-semibold mb-2">{bike.name}</h3>
         {/* <p className="text-muted-foreground text-sm mb-2">{product.category}</p> */}

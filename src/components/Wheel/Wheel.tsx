@@ -62,7 +62,7 @@ const Wheel = () => {
   };
   return (
     <div className="wheel-container">
-       <h2 className="text-xl font-semibold mb-4">Spin to Win: Discover Your Discount!</h2>
+       <h2 className="text-3xl font-medium mb-4">Spin to Win: Discover Your Discount!</h2>
      <Toaster/>
      <div className="wheel-modal-container">
         <WheelComponent

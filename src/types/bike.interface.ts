@@ -10,3 +10,15 @@ export type TBike = {
     model: string;
     brand: string;
 }
+
+
+export type TRental = {
+    userId?: string;
+    bikeId: string;
+    startTime: Date;
+    returnTime?: Date;
+    totalCost?: number;
+    isReturned?: boolean;
+    isPaid?: boolean;
+    transactionId: string;
+}

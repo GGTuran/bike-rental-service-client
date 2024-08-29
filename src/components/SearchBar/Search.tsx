@@ -15,7 +15,7 @@ const Search = () => {
 
     return (
         <div className="p-6 max-w-screen-md mx-auto">
-            <h1 className="text-3xl font-bold mb-4">Find Your Perfect Bike</h1>
+            <h1 className="text-3xl font-medium mb-4">Find Your Perfect Bike</h1>
             <p className="text-lg mb-6">Search our collection of bikes and get started with your adventure!</p>
             
             <div className="flex mb-6">
@@ -28,7 +28,7 @@ const Search = () => {
                 />
                 <Button
                     onClick={handleSearch}
-                    
+                    className='ml-2'
                 >
                     Search
                 </Button>
@@ -54,7 +54,7 @@ const Search = () => {
                         <h3 className="text-xl font-semibold">{bike.name}</h3>
                         <p>Price: ${bike.pricePerHour}</p>
                         </div>
-                        <div>
+                        <div >
                             <Link  to={`/bikes/${bike._id}`}><Button >View more</Button></Link>
                         </div>
                         {/* Additional bike details */}

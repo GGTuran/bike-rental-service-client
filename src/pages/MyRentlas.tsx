@@ -3,9 +3,10 @@ import Loading from "@/components/Loading/Loading";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useGetBookingsQuery } from "@/redux/features/booking/bookingApi";
-import { useState } from "react";
+import { Key, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { TRental } from "@/types/bike.interface";
 
 
 
@@ -57,8 +58,8 @@ const MyRentals = () => {
 
   const data = rentals.data.result;
   console.log(data)
-  const paidRentals = data?.filter((rental: { isReturned: boolean }) => rental.isReturned);
-  const unpaidRentals = data?.filter((rental: { isReturned: boolean }) => !rental.isReturned);
+  const paidRentals = data?.filter((rental: { isPaid: boolean }) => rental.isPaid);
+  const unpaidRentals = data?.filter((rental: { isPaid: boolean }) => !rental.isPaid);
 
   return (
     <div className="p-6">
@@ -74,7 +75,7 @@ const MyRentals = () => {
           {unpaidRentals.length === 0 ? (
             <p>No unpaid rentals found.</p>
           ) : (
-            unpaidRentals.map((rental) => (
+            unpaidRentals.map((rental: { id: string; bikeId: { name: any; }; startTime: string | number | Date; returnTime: string | number | Date; _id: string; totalCost: number; isPaid: any; }) => (
               <div key={rental.id} className="p-4 border-b">
                 <h3>{rental.bikeId?.name || 'Bike name not available'}</h3>
                 <p>Start Time: {rental.startTime ? new Date(rental.startTime).toLocaleString() : "Not available"}</p>
@@ -85,9 +86,9 @@ const MyRentals = () => {
                 </p>
                 {/* Show coupon application option */}
                
-                  <Button onClick={applyCoupon}>Apply Coupon</Button>
+                  <Button className="mr-2" onClick={applyCoupon}>Apply Coupon</Button>
              
-                {!rental.isReturned && (
+                {!rental.isPaid && (
                   <Button onClick={() => handlePayment(rental._id)}>Pay</Button>
                 )}
               </div>
@@ -100,9 +101,9 @@ const MyRentals = () => {
           {paidRentals.length === 0 ? (
             <p>No paid rentals found.</p>
           ) : (
-            paidRentals.map((rental) => (
+            paidRentals.map((rental: { id: string; bikeId: { name: any; }; startTime: string | number | Date; returnTime: string | number | Date; totalCost: number; }) => (
               <div key={rental.id} className="p-4 border-b">
-                <h3>{rental.bike?.name || 'Bike name not available'}</h3>
+                <h3>{rental?.bikeId?.name || 'Bike name not available'}</h3>
                 <p>Start Time: {rental.startTime ? new Date(rental.startTime).toLocaleString() : "Not available"}</p>
                 <p>Return Time: {rental.returnTime ? new Date(rental.returnTime).toLocaleString() : "Not Returned"}</p>
                 <p>Total Cost: ${rental.totalCost.toFixed(2)}</p>

@@ -5,13 +5,14 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
 import { useSignUPMutation } from '@/redux/features/auth/authApi';
+import toast from 'react-hot-toast';
 
 const schema = z.object({
     name: z.string().min(1, "Name is required"),
     email: z.string().email("Invalid email address"),
     password: z.string().min(2, "Password should be at least 6 characters long"),
-    phone: z.string(),
-    address: z.string(),
+    phone: z.string().min(1, "Phone is required"),
+    address: z.string().min(1, "Address is required"),
 });
 
 type SignUpFormInputs = z.infer<typeof schema>;
@@ -32,6 +33,8 @@ const Register = () => {
             navigate('/login', { state: { success: 'Registration successful! Please log in.' } });
         } catch (error) {
             console.error('Registration failed:', error);
+            toast.error('Sign up failed')
+            navigate('/');
         }
     };
 

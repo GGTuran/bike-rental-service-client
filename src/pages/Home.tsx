@@ -13,8 +13,8 @@ const Home = () => {
     return (
         <div>
             <HeroSection></HeroSection>
-            <FeaturedSection></FeaturedSection>
             <Search></Search>
+            <FeaturedSection></FeaturedSection>
             {/* <WheelComponent></WheelComponent> */}
             <Wheel></Wheel>
             <CompareList></CompareList>

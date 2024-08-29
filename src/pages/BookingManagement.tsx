@@ -1,5 +1,6 @@
 
 import { useAllBookingsQuery, useReturnBikeMutation } from "@/redux/features/booking/bookingApi";
+import {  ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 const BookingManagement = () => {
@@ -11,6 +12,8 @@ const BookingManagement = () => {
     try {
         // console.log(_id)
       await returnBike(_id).unwrap();
+      const res = await returnBike(_id).unwrap();
+      console.log(res);
       toast.success("Bike returned successfully");
     } catch (error) {
       toast.error("Failed to return bike");
@@ -37,7 +40,7 @@ const BookingManagement = () => {
             </tr>
           </thead>
           <tbody>
-            {rentals?.data?.map((rental) => (
+            {rentals?.data?.map((rental: { _id: string; bikeId: { name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }; userId: { email: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }; startTime: string | number | Date; isReturned: any; returnTime: string | number | Date; totalCost: any; }) => (
               <tr key={rental._id} className="border-b">
                 <td className="py-2 px-4">{rental.bikeId.name}</td>
                 <td className="py-2 px-4">{rental.userId.email}</td>

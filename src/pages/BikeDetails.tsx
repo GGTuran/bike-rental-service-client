@@ -66,7 +66,7 @@ const BikeDetails = () => {
     return (
       <div className="m-10  mx-auto px-4 mt-8">
         <Toaster />
-        <div className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <div className="max-w-lg mx-auto  p-8 rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold mb-4">{bike.data.name}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="md:mt-12">
@@ -77,15 +77,15 @@ const BikeDetails = () => {
               />
             </div>
             <div>
-              <p className="text-black mb-2">Brand: {bike.data.brand}</p>
-              <p className="text-black mb-2">
+              <p className=" mb-2">Brand: {bike.data.brand}</p>
+              <p className=" mb-2">
                 Description: {bike.data.description}
               </p>
-              <p className="text-black mb-2">Model: {bike.data.model}</p>
-              <p className="text-black mb-2">Available: {bike.data.isAvailable ? "Yes" : "No"}</p>
+              <p className=" mb-2">Model: {bike.data.model}</p>
+              <p className=" mb-2">Available: {bike.data.isAvailable ? "Yes" : "No"}</p>
               {/* <span className="flex gap-2">{Rating(bike.data.rating)}</span> */}
   
-              <p className="text-black mb-2">Price: ${bike.data.pricePerHour}</p>
+              <p className=" mb-2">Price: ${bike.data.pricePerHour}</p>
               
               <Button onClick={handleBookNow} className="px-4 py-2 bg-gray-300 text-black rounded-lg hover:bg-gray-500 transition-colors duration-300">
               Book Now
@@ -114,7 +114,7 @@ const BikeDetails = () => {
           </div>
           <DialogFooter className="mt-4 flex justify-end space-x-2">
             <Button variant="ghost" onClick={handleCancel}>Cancel</Button>
-            <Button onClick={handleConfirm}>Pay & Confirm</Button>
+            <Button onClick={handleConfirm}>Pay Advance to Confirm</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
