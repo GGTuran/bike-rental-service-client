@@ -7,7 +7,8 @@ const CouponModal = ({ isOpen, onClose }:any) => {
   const couponCode = useAppSelector((state) => state.coupon.code);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(`${couponCode}%`); // Add '%' sign when copying
+    //copying the code
+    navigator.clipboard.writeText(`${couponCode}%`); 
   };
 
   return (

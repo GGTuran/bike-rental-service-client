@@ -36,7 +36,7 @@ import { useGetBikeByIdQuery, useUpdateBikeMutation } from "@/redux/features/bik
     // Update bike hook from RTK query
     const [updateBike] = useUpdateBikeMutation();
   
-    // Setting all data as an empty string or boolean for isAvailable
+    // Setting all data as an empty string and boolean for isAvailable
     const [formData, setFormData] = useState<FormData>({
       name: "",
       description: "",
@@ -57,7 +57,7 @@ import { useGetBikeByIdQuery, useUpdateBikeMutation } from "@/redux/features/bik
           pricePerHour: bikeData?.data?.pricePerHour
             ? bikeData?.data?.pricePerHour.toString()
             : "",
-          isAvailable: bikeData?.data?.isAvailable ?? false, // Default to false if undefined
+          isAvailable: bikeData?.data?.isAvailable ?? false, 
           image: bikeData?.data?.image || "",
           cc: bikeData?.data?.cc ? bikeData?.data?.cc.toString() : "",
           year: bikeData?.data?.year ? bikeData?.data?.year.toString() : "",

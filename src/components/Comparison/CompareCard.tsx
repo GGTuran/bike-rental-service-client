@@ -17,7 +17,7 @@ interface Bike {
 
 const CompareCard: React.FC<BikeCardProps> = ({ bike }) => {
   const dispatch = useAppDispatch();
-  const selectedBikes = useAppSelector((state) => state.comparison.selectedBikes);
+  const selectedBikes = useAppSelector((state) => state.comparison.selectedBikes);    //storing the bikes in the redux store
   const isSelected = selectedBikes.includes(bike._id) ;
   // console.log(isSelected)
 

@@ -2,11 +2,12 @@ import { useGetAllBikesQuery } from "@/redux/features/bike/bikeApi";
 import CompareCard from "./CompareCard";
 import CompareTable from "./CompareTable";
 import { TBike } from "@/types/bike.interface";
+import Loading from "../Loading/Loading";
 
 const CompareList = () => {
   const { data: bikes, isLoading } = useGetAllBikesQuery('');
 
-  if (isLoading) return <p>Loading bikes...</p>;
+  if (isLoading) return <Loading></Loading>;
 
   return (
     <div className=" p-4">

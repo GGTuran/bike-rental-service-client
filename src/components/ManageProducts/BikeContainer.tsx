@@ -10,7 +10,7 @@ const BikeContainer = () => {
   // Fetching data through RTK Query
   const { data: products, isLoading } = useGetAllBikesQuery(undefined, {
     pollingInterval: 10000,
-  });
+  });   //using rtk polling interval for latest product
 
   // Define filter state
   const [filters, setFilters] = useState({

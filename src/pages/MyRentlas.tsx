@@ -10,7 +10,7 @@ import toast, { Toaster } from "react-hot-toast";
 const MyRentals = () => {
   const { data: rentals, isLoading, isError } = useGetBookingsQuery("");
   const [activeTab, setActiveTab] = useState("unpaid");
-  const [discountedRentals, setDiscountedRentals] = useState<any[]>([]); // State to hold rentals with discounted prices
+  const [discountedRentals, setDiscountedRentals] = useState<any[]>([]);      // State to hold rentals with discounted prices
 
 
 

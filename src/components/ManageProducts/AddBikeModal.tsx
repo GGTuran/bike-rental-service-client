@@ -26,7 +26,7 @@ const AddBikeModal = () => {
   const [pricePerHour, setPricePerHour] = useState("");
   const [image, setImage] = useState("");
 
-  // Retrieve the mutation hook
+  // Retrieving the mutation hook
   const [addProduct, { isLoading }] =
     useAddBikeMutation();
   // console.log(isLoading, isSuccess, isError, data);
@@ -34,7 +34,7 @@ const AddBikeModal = () => {
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    // Keep data in an object to send to the server
+    // Keeping data in an object to send to the server
     const productDetails = {
       name,
       description,
@@ -48,7 +48,7 @@ const AddBikeModal = () => {
     };
 
     // console.log(productDetails);
-    // Use try-catch for error handling
+    // Using try-catch for error handling
     try {
       await addProduct(productDetails);
       toast.success("Product added successfully!");

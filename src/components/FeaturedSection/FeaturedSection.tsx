@@ -5,7 +5,7 @@ import BikeCard from "../BikeCard/BikeCard";
 const FeaturedSection = () => {
   const { data: bikes, isLoading } = useGetAllBikesQuery(undefined, {
     pollingInterval: 30000,
-  }); //rtk query polling interval for fetching latest data
+  });      //rtk query polling interval for fetching latest data
 
   // console.log(bikes);
 

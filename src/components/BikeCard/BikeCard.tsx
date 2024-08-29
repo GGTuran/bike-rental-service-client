@@ -1,8 +1,5 @@
-
-
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-
 
 const BikeCard = ({ bike }: any) => {
   return (
@@ -19,13 +16,8 @@ const BikeCard = ({ bike }: any) => {
       />
       <div className="p-4">
         <h3 className="text-lg font-semibold mb-2">{bike.name}</h3>
-        {/* <p className="text-muted-foreground text-sm mb-2">{product.category}</p> */}
         <p className="text-sm mb-4">{bike.brand}</p>
         <p className="text-sm mb-4">{bike.description}</p>
-        {/* <div className="flex items-center mb-2 justify-between">
-          <span className="flex gap-2">{Rating(product.rating)}</span>
-          <span className="font-medium">Stock:{product.stockQuantity}</span>
-        </div> */}
 
         <div className="flex justify-between items-center">
           <span className="font-medium">${bike.pricePerHour}</span>

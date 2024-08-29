@@ -96,7 +96,7 @@ const Navbar = () => {
                 href="/get-me"
                 className="text-sm font-medium transition-colors hover:text-primary"
               >
-                User Dashboard
+                Profile
               </a>
               <a
                 href="/users/all-bikes"
@@ -193,7 +193,7 @@ const Navbar = () => {
                     href="/get-me"
                     className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
                   >
-                    Admin Dashboard
+                    Profile
                   </a>
                   <a
                     href="/admin/manage-bikes"
@@ -221,7 +221,7 @@ const Navbar = () => {
                     href="/get-me"
                     className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
                   >
-                    User Dashboard
+                    Profile
                   </a>
                   <a
                     href="/users/all-bikes"

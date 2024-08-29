@@ -7,6 +7,29 @@
 
 [Live Link](https://home-of-bikes.vercel.app/)
 
+## To test the api here is the admin credentials:
+
+
+
+```plaintext
+{
+  "email": "john@admin.com",
+  "password": "admin123"
+}
+```
+
+
+
+## To test the api here is the user credentials:
+
+```plaintext
+{
+  "email": "john@user.com",
+  "password": "user123"
+}
+```
+
+
 ## Introduction
 This frontend application is designed to support a bike rental platform, offering a seamless and engaging experience for users looking to rent bikes. It provides a visually appealing and intuitive interface with user-friendly navigation, ensuring an easy and efficient process for browsing, selecting, and renting bikes. The responsive design and interactive features make it accessible across all devices, catering to both casual riders and biking enthusiasts. Administrators have access to robust tools for managing bike availability, bookings, user accounts, and payment processing, making it a comprehensive solution for running a bike rental business smoothly and effectively.
 

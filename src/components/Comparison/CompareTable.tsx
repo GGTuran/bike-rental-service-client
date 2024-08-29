@@ -17,7 +17,7 @@ const CompareTable = () => {
     const fetchBikes = async () => {
       setLoading(true);
       try {
-        const bikePromises = selectedBikes.map((id) => fetchBikeById(id));
+        const bikePromises = selectedBikes.map((id) => fetchBikeById(id));        //fetching bike one by one with an id by using a util function
         const bikes = await Promise.all(bikePromises);
         setBikeArray(bikes);
         // console.log('Fetched bikes:', bikes);
@@ -27,7 +27,7 @@ const CompareTable = () => {
         setLoading(false);
       }
     };
-
+    //storing the selected bikes
     if (selectedBikes.length > 0) {
       fetchBikes();
     } else {
