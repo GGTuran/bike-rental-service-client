@@ -7,7 +7,7 @@ const FeaturedSection = () => {
     pollingInterval: 30000,
   }); //rtk query polling interval for fetching latest data
 
-  console.log(bikes);
+  // console.log(bikes);
 
   if (isLoading) {
     return (
@@ -25,7 +25,7 @@ const FeaturedSection = () => {
           Latest Products
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {bikes.data.slice(0, 4).map((bike: { _id: any }): any => (
+          {bikes?.data?.slice(0, 4).map((bike: { _id: any }): any => (
             <BikeCard bike={bike} key={bike._id}></BikeCard>
           ))}
         </div>

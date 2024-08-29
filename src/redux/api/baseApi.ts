@@ -1,10 +1,9 @@
 import { BaseQueryApi, BaseQueryFn, createApi, DefinitionType, FetchArgs, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { RootState } from '../store';
-import toast from 'react-hot-toast';
 import { logout, setUser } from '../features/auth/authSlice';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:5000/api',
+  baseUrl: 'https://bike-rental-service-server.vercel.app/api',
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -33,9 +32,9 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   // }
   if (result?.error?.status === 401) {
     //* Send Refresh
-    console.log('Sending refresh token');
+    // console.log('Sending refresh token');
 
-    const res = await fetch('http://localhost:5000/api/auth/refresh-token', {
+    const res = await fetch('https://bike-rental-service-server.vercel.app/api/auth/refresh-token', {
       method: 'POST',
       credentials: 'include',
     });

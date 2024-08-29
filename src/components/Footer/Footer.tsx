@@ -19,7 +19,7 @@ const Footer = () => {
                 </h2>
 
                 <p className="mt-4 ">
-                  Join our community of sports enthusiasts and embrace a
+                  Join our community of Bike enthusiasts and embrace a
                   lifestyle of excellence.
                 </p>
               </div>

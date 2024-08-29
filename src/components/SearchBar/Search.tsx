@@ -4,6 +4,7 @@ import { useGetAllBikesQuery } from '@/redux/features/bike/bikeApi';
 import { useState } from 'react';
 import { Button } from '../ui/button';
 import { Link } from 'react-router-dom';
+import { TBike } from '@/types/bike.interface';
 
 const Search = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -48,7 +49,7 @@ const Search = () => {
                 {isLoading && <p>Loading...</p>}
                 {isError && <p>Error occurred while fetching bikes.</p>}
                 {bikes?.length === 0 && <p>No bikes found.</p>}
-                {bikes?.data?.map(bike => (
+                {bikes?.data?.map((bike: TBike) => (
                     <div key={bike._id} className="p-4 border-b flex items-center justify-between">
                         <div>
                         <h3 className="text-xl font-semibold">{bike.name}</h3>

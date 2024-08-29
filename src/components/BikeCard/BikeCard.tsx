@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Rating from "../ui/Rating";
+
 
 const BikeCard = ({ bike }: any) => {
   return (

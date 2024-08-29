@@ -92,7 +92,7 @@ import { useGetBikeByIdQuery, useUpdateBikeMutation } from "@/redux/features/bik
         return acc;
       }, {} as Partial<FormData>);
   
-      console.log('id=>', bikeId, 'data=>', updatedBike)
+      // console.log('id=>', bikeId, 'data=>', updatedBike)
       updateBike({ id: bikeId, bikeInfo: updatedBike });
       toast.success("Bike Updated Successfully");
     };

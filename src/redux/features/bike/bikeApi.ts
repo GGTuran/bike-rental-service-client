@@ -19,7 +19,7 @@ const bikeApi = baseApi.injectEndpoints({
         }),
         addBike: builder.mutation({
             query:(bikeInfo) => {
-                console.log('from base api=>', bikeInfo);
+                // console.log('from base api=>', bikeInfo);
                 return{
                     url: `/bikes`,
                     method: 'POST',
@@ -30,7 +30,7 @@ const bikeApi = baseApi.injectEndpoints({
         }),
         updateBike: builder.mutation({
             query: ({id, bikeInfo}) => {
-                console.log('from base api', id,bikeInfo)
+                // console.log('from base api', id,bikeInfo)
                 return {
                     url: `/bikes/${id}`,
                     method: 'PATCH',

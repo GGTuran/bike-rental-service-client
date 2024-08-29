@@ -6,14 +6,14 @@ import toast, { Toaster } from "react-hot-toast";
 const BookingManagement = () => {
   const { data: rentals, isLoading, error } = useAllBookingsQuery('');
   const [returnBike] = useReturnBikeMutation();
-  console.log(rentals?.data);
+  // console.log(rentals?.data);
 
   const handleReturnBike = async (_id: string) => {
     try {
         // console.log(_id)
       await returnBike(_id).unwrap();
-      const res = await returnBike(_id).unwrap();
-      console.log(res);
+      // const res = await returnBike(_id).unwrap();
+      // console.log(res);
       toast.success("Bike returned successfully");
     } catch (error) {
       toast.error("Failed to return bike");

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { Table, TableBody, TableCell, TableHeader, TableRow } from '../ui/table';
 import { Button } from '../ui/button';
 import { clearComparison } from '@/redux/features/comparison/comparisonSlice';
-import { TBike } from '@/types/bike.interface';
 import { fetchBikeById } from '@/utils/utils';
+import Loading from '../Loading/Loading';
 
 
 const CompareTable = () => {
@@ -20,9 +20,9 @@ const CompareTable = () => {
         const bikePromises = selectedBikes.map((id) => fetchBikeById(id));
         const bikes = await Promise.all(bikePromises);
         setBikeArray(bikes);
-        console.log('Fetched bikes:', bikes);
+        // console.log('Fetched bikes:', bikes);
       } catch (error) {
-        console.error('Failed to fetch bikes:', error);
+        // console.error('Failed to fetch bikes:', error);
       } finally {
         setLoading(false);
       }
@@ -35,10 +35,10 @@ const CompareTable = () => {
     }
   }, [selectedBikes]);
 
-  if (loading) return <p className='text-center'>Loading bikes for comparison...</p>;
+  if (loading) return <Loading/>;
 
   if (bikeArray.length === 0) return <p className='text-center'>No bikes selected for comparison.</p>;
-  console.log('bike array', bikeArray[0])
+  // console.log('bike array', bikeArray[0])
 
   return (
     <div className="mt-4">

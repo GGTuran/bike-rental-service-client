@@ -7,7 +7,7 @@ const userApi = baseApi.injectEndpoints({
                 url:`/users/me`,
                 method: 'GET',
             }),
-            // providesTags
+            providesTags: ['users'],
         }),
         updateProfile: builder.mutation({
             query: (userInfo) => ({
@@ -15,7 +15,7 @@ const userApi = baseApi.injectEndpoints({
                 method: 'PATCH',
                 body: userInfo,
             }),
-            invalidatesTags: ['users']
+            invalidatesTags: ['users'],
         }),
         getAllUsers: builder.query({
             query: () => ({

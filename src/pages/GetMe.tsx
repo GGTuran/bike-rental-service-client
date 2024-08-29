@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useGetProfileQuery, useUpdateProfileMutation } from "@/redux/features/user/userApi";
+import Loading from "@/components/Loading/Loading";
 
 // Define a type for your form data
 interface FormData {
@@ -71,7 +72,7 @@ const ProfilePage: React.FC = () => {
     setEditMode(false);
   };
 
-  if (isLoading) return <p>Loading profile...</p>;
+  if (isLoading) return <p><Loading></Loading></p>;
   if (isError) return <p>Error fetching profile information. Please try again.</p>;
 
   return (

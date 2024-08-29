@@ -8,8 +8,6 @@ import { Button } from "@/components/ui/button";
 import MountainIcon from "@/assets/icons/MountainIcon";
 import MenuIcon from "@/assets/icons/MenuIcon";
 import XIcon from "@/assets/icons/XIIcon";
-import InfoIcon from "@/assets/icons/InfoIcon";
-import MailIcon from "@/assets/icons/MailIcon";
 import MoonIcon from "@/assets/icons/MoonIcon";
 import SunIcon from "@/assets/icons/SunIcon";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -177,14 +175,14 @@ const Navbar = () => {
                 href="/about-us"
                 className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
               >
-                <InfoIcon className="h-5 w-5" />
+                
                 About Us
               </a>
               <a
                 href="/contact"
                 className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
               >
-                <MailIcon className="h-5 w-5" />
+                
                 Contact
               </a>
 

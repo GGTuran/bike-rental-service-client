@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { useAddBikeMutation } from "@/redux/features/bike/bikeApi";
 import { FormEvent, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import Loading from "../Loading/Loading";
 
 const AddBikeModal = () => {
   // Initialize all fields required for TBike type in local state
@@ -26,9 +27,9 @@ const AddBikeModal = () => {
   const [image, setImage] = useState("");
 
   // Retrieve the mutation hook
-  const [addProduct, { data, isLoading, isError, isSuccess }] =
+  const [addProduct, { isLoading }] =
     useAddBikeMutation();
-  console.log(isLoading, isSuccess, isError, data);
+  // console.log(isLoading, isSuccess, isError, data);
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -46,7 +47,7 @@ const AddBikeModal = () => {
       image,
     };
 
-    console.log(productDetails);
+    // console.log(productDetails);
     // Use try-catch for error handling
     try {
       await addProduct(productDetails);
@@ -55,6 +56,9 @@ const AddBikeModal = () => {
       toast.error("Error adding product. Please try again.");
     }
   };
+
+
+  if (isLoading) return <Loading/>;
 
   return (
     <div>

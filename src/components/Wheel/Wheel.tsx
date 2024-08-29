@@ -44,7 +44,7 @@ const Wheel = () => {
     "#FF9000",
   ];
   const onFinished = (winner: string) => {
-    console.log(winner);
+    // console.log(winner);
      
   // Extract the discount value from the segment text
   const discountMatch = winner.match(/(\d+)%/);

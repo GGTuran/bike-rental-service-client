@@ -33,11 +33,10 @@ const AboutUs = () => {
           <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
             <div>
               <h2 className="text-3xl font-medium tracking-tight text-foreground sm:text-3xl">
-                About Home Of Sports
+                About Home Of Bikes
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Home Of Sports is a leading retailer of high-quality sporting
-                goods, founded in 1985. With over 35 years of experience in the
+                Home Of Bikes is a leading retailer of high-quality bikes, founded in 2010. With over 14 years of experience in the
                 industry, we pride ourselves on our expertise and commitment to
                 providing our customers with the best products and services.
               </p>
@@ -47,16 +46,10 @@ const AboutUs = () => {
                 Our Mission and Vision
               </h3>
               <p className="mt-4 text-muted-foreground">
-                Our mission is to inspire and empower our customers to live an
-                active, healthy lifestyle. We strive to be the trusted
-                destination for all their sporting goods needs, offering a wide
-                selection of top-quality products and exceptional customer
-                service.
+                Our mission to provide a seamless and intuitive bike management experience that empowers bike rental businesses with comprehensive tools for managing their fleet, streamlining bookings, and enhancing customer satisfaction. We are dedicated to delivering user-friendly technology that simplifies operations, drives efficiency, and fosters a community of bike enthusiasts.
               </p>
               <p className="mt-4 text-muted-foreground">
-                Our vision is to be the premier sporting goods retailer, known
-                for our unparalleled product expertise, innovative solutions,
-                and unwavering commitment to our community.
+                Our vision is to be the leading platform for bike rental management, transforming the industry with innovative solutions that set new standards for operational excellence, customer engagement, and sustainability. Our vision is to create a global ecosystem where businesses and riders alike can thrive, enjoying a connected, efficient, and eco-friendly biking experience.
               </p>
             </div>
           </div>

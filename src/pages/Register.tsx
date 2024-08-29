@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { useAppDispatch } from '@/redux/hooks';
+
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -19,7 +19,7 @@ type SignUpFormInputs = z.infer<typeof schema>;
 
 const Register = () => {
     const navigate = useNavigate();
-    const dispatch = useAppDispatch();
+ 
     const [signUp, { error }] = useSignUPMutation();
 
     const { register, handleSubmit, formState: { errors } } = useForm<SignUpFormInputs>({
@@ -28,11 +28,11 @@ const Register = () => {
 
     const onSubmit = async (data: SignUpFormInputs) => {
         try {
-            const res = await signUp({ ...data, role: "user" }).unwrap();
-            console.log(res)
+             await signUp({ ...data, role: "user" }).unwrap();
+            // console.log(res)
             navigate('/login', { state: { success: 'Registration successful! Please log in.' } });
         } catch (error) {
-            console.error('Registration failed:', error);
+            // console.error('Registration failed:', error);
             toast.error('Sign up failed')
             navigate('/');
         }

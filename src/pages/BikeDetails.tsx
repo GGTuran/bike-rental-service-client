@@ -1,7 +1,6 @@
 import Loading from "@/components/Loading/Loading";
 import { useGetBikeByIdQuery } from "@/redux/features/bike/bikeApi";
-import { useAppDispatch } from "@/redux/hooks";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { useBookBikeMutation } from "@/redux/features/booking/bookingApi";
 import { useState } from "react";
@@ -17,7 +16,7 @@ const BikeDetails = () => {
   const [createRental] = useBookBikeMutation();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [startTime, setStartTime] = useState("");
-  const navigate = useNavigate();
+
 
   const handleBookNow = () => {
     setIsDialogOpen(true);

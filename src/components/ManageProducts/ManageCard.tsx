@@ -61,6 +61,8 @@ const ManageCard = ({
             <h3 className="mt-4 text-lg font-medium text-black">{brand}</h3>
             <h3 className="mt-4 text-lg font-medium text-black">{model}</h3>
             <h3 className="mt-4 text-lg font-medium text-black">{name}</h3>
+            <h3 className="mt-4 text-lg font-medium text-black">{year}</h3>
+            <h3 className="mt-4 text-lg font-medium text-black">{cc}</h3>
 
             <p className="mt-1.5 text-sm font-medium text-black">
               {description}

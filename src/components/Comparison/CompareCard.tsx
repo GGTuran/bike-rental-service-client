@@ -19,7 +19,7 @@ const CompareCard: React.FC<BikeCardProps> = ({ bike }) => {
   const dispatch = useAppDispatch();
   const selectedBikes = useAppSelector((state) => state.comparison.selectedBikes);
   const isSelected = selectedBikes.includes(bike._id) ;
-  console.log(isSelected)
+  // console.log(isSelected)
 
   const handleCompareToggle = () => {
     if (isSelected) {
