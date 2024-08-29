@@ -14,11 +14,7 @@ const Login = () => {
     
     const { register, handleSubmit, formState: { errors } } = useForm<LoginFormInputs>({
         resolver: zodResolver(loginSchema),
-        defaultValues: {
-            email: "john@user.com",
-            password: "user123",
-        },
-    });
+       });
 
     const [login, { error }] = useLoginMutation();
 

@@ -41,16 +41,16 @@ const BookingManagement = () => {
           </thead>
           <tbody>
             {rentals?.data?.map((rental: { _id: string; bikeId: { name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }; userId: { email: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }; startTime: string | number | Date; isReturned: any; returnTime: string | number | Date; totalCost: any; }) => (
-              <tr key={rental._id} className="border-b">
-                <td className="py-2 px-4">{rental.bikeId.name}</td>
-                <td className="py-2 px-4">{rental.userId.email}</td>
-                <td className="py-2 px-4">{new Date(rental.startTime).toLocaleString()}</td>
-                <td className="py-2 px-4">{rental.isReturned ? new Date(rental.returnTime).toLocaleString() : 'N/A'}</td>
-                <td className="py-2 px-4">{rental.totalCost ?? 'N/A'}</td>
+              <tr key={rental?._id} className="border-b">
+                <td className="py-2 px-4">{rental?.bikeId?.name}</td>
+                <td className="py-2 px-4">{rental?.userId?.email}</td>
+                <td className="py-2 px-4">{new Date(rental?.startTime).toLocaleString()}</td>
+                <td className="py-2 px-4">{rental?.isReturned ? new Date(rental?.returnTime).toLocaleString() : 'N/A'}</td>
+                <td className="py-2 px-4">{rental?.totalCost ?? 'N/A'}</td>
                 <td className="py-2 px-4 text-center">
-                  {!rental.isReturned && (
+                  {!rental?.isReturned && (
                     <button
-                      onClick={() => handleReturnBike(rental._id)}
+                      onClick={() => handleReturnBike(rental?._id)}
                       className="bg-blue-500 text-white px-2 py-1 rounded"
                     >
                       Return Bike
